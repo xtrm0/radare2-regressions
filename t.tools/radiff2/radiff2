@@ -47,10 +47,10 @@ run_test
 NAME='radiff2 unified string comparsion'
 BROKEN=
 ARGS=
-CMDS="!!radiff2 -uz ../../bins/elf/elf_one_symbol_shdr ../../bins/elf/elf_one_symbol_shdr1"
-EXPECT="[31m- Hell
-[0m[32m+ AAAA
-[0m"
+CMDS="!!radiff2 -quz ../../bins/elf/elf_one_symbol_shdr ../../bins/elf/elf_one_symbol_shdr1"
+EXPECT="-0x00000000:48656c6c \"Hello world!\\n\"
++0x00000000:41414141
+"
 run_test
 
 NAME='radiff2 gnu unified string comparsion'
