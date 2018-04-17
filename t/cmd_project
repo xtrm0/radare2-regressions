@@ -382,7 +382,6 @@ Po blah > /dev/null
 axq
 '
 EXPECT='0x00000009 -> 0x00000003  code call
-0x00000009 -> 0x00000003  code call
 '
 run_test
 

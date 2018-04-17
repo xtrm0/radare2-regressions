@@ -34,16 +34,6 @@ EXPECT="VMI Type Info at 0x08048f4c:
       Base class type descriptor address: 0x08048fac
       Base class flags: 0x402
 
-VMI Type Info at 0x08048f4c:
-  Reference to RTTI's type class: 0x0804b140
-  Reference to type's name: 0x08048f6c
-  Flags: 0x0
-  Count of base classes: 0x2
-      Base class type descriptor address: 0x08048f74
-      Base class flags: 0x2
-      Base class type descriptor address: 0x08048fac
-      Base class flags: 0x402
-
 Type Info at 0x08048f74:
   Reference to RTTI's type class: 0x0804b048
   Reference to type's name: 0x08048f7c
