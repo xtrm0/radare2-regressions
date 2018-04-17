@@ -164,10 +164,10 @@ EXPECT='|       ,=< 0x000113bd      je 0x1144e
 |   |||||   0x00011416      lea rbx, [rax + 4]
 |   |||||   0x0001141a      mov rax, qword [rip + 0xdeaf]              ; reloc.program_invocation_short_name ; [0x1f2d0:8]=0
 |   |||||   0x00011421      mov qword [rax], rbx
-|   |||||   ; JMP XREF from 0x000113d0 (sub.stderr_390)
-|   |||||   ; JMP XREF from 0x000113e0 (sub.stderr_390)
-|   |||||   ; JMP XREF from 0x000113f4 (sub.stderr_390)
-|   |||||   ; JMP XREF from 0x00011414 (sub.stderr_390)
+|   |||||   ; JMP XREF from 0x000113f4 (sub.strrchr_390)
+|   |||||   ; JMP XREF from 0x000113e0 (sub.strrchr_390)
+|   |||||   ; JMP XREF from 0x000113d0 (sub.strrchr_390)
+|   |||||   ; JMP XREF from 0x00011414 (sub.strrchr_390)
 |   ````--> 0x00011424      mov rax, qword [rip + 0xde3d]              ; [0x1f268:8]=0x21680
 '
 run_test
@@ -204,10 +204,10 @@ EXPECT='|           0x00003ca6      cmp eax, 2
 |    ||`--> 0x00003ce3      mov esi, 5
 |    || |   0x00003ce8      xor edi, edi
 |    || |   0x00003cea      mov dword [rip + 0x1d60c], 0               ; [0x21300:4]=0
-|    || |   0x00003cf4      call fcn.00012740
-|    || |   ; JMP XREF from 0x00004602 (main)
-|    || |   ; JMP XREF from 0x00004c38 (main)
+|    || |   0x00003cf4      call sub.__stack_chk_fail_740              ; void __stack_chk_fail(void)
 |    || |   ; JMP XREF from 0x00003ce1 (main)
+|    || |   ; JMP XREF from 0x00004c38 (main)
+|    || |   ; JMP XREF from 0x00004602 (main)
 |    `----> 0x00003cf9      lea rdi, [rip + 0x14fb4]                   ; str.QUOTING_STYLE ; 0x18cb4 ; "QUOTING_STYLE"
 '
 run_test
@@ -245,10 +245,10 @@ EXPECT='|           0x00003ca6      cmp eax, 2
 |  | `----> 0x00003ce3      mov esi, 5
 |  |   |    0x00003ce8      xor edi, edi
 |  |   |    0x00003cea      mov dword [rip + 0x1d60c], 0               ; [0x21300:4]=0
-|  |   |    0x00003cf4      call fcn.00012740
-|  |   |    ; JMP XREF from 0x00004602 (main)
-|  |   |    ; JMP XREF from 0x00004c38 (main)
+|  |   |    0x00003cf4      call sub.__stack_chk_fail_740              ; void __stack_chk_fail(void)
 |  |   |    ; JMP XREF from 0x00003ce1 (main)
+|  |   |    ; JMP XREF from 0x00004c38 (main)
+|  |   |    ; JMP XREF from 0x00004602 (main)
 | --------> 0x00003cf9      lea rdi, [rip + 0x14fb4]                   ; str.QUOTING_STYLE ; 0x18cb4 ; "QUOTING_STYLE"
 '
 run_test
@@ -286,10 +286,10 @@ EXPECT='|           0x00003ca6      cmp eax, 2
 |  | `----> 0x00003ce3      mov esi, 5
 |  |   |    0x00003ce8      xor edi, edi
 |  |   |    0x00003cea      mov dword [rip + 0x1d60c], 0               ; [0x21300:4]=0
-|  |   |    0x00003cf4      call fcn.00012740
-|  |   |    ; JMP XREF from 0x00004602 (main)
-|  |   |    ; JMP XREF from 0x00004c38 (main)
+|  |   |    0x00003cf4      call sub.__stack_chk_fail_740              ; void __stack_chk_fail(void)
 |  |   |    ; JMP XREF from 0x00003ce1 (main)
+|  |   |    ; JMP XREF from 0x00004c38 (main)
+|  |   |    ; JMP XREF from 0x00004602 (main)
 | --------> 0x00003cf9      lea rdi, [rip + 0x14fb4]                   ; str.QUOTING_STYLE ; 0x18cb4 ; "QUOTING_STYLE"
 '
 run_test
@@ -308,8 +308,8 @@ aaa >/dev/null
 s 0x00012740
 pdf
 '
-EXPECT='/ (fcn) fcn.00012740 76
-|   fcn.00012740 ();
+EXPECT='/ (fcn) sub.__stack_chk_fail_740 76
+|   sub.__stack_chk_fail_740 ();
 |           ; var int local_8h @ rbp-0x8
 |           0x00012740      push rbp
 |           0x00012741      mov rbp, rsp

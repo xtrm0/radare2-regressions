@@ -8,7 +8,7 @@ FILE=../../bins/elf/analysis/mipsbe-busybox
 CMDS="aac
 afl~?
 "
-EXPECT="1271
+EXPECT="1269
 "
 run_test
 
@@ -27,7 +27,7 @@ FILE=../../bins/elf/libmagic.so
 CMDS="aac
 afl~?
 "
-EXPECT="214
+EXPECT="207
 "
 run_test
 
