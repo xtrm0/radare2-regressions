@@ -52,9 +52,9 @@ ARGS=
 CMDS='
 aaa
 axt @ sym.imp.exit'
-EXPECT='sub.Password_Incorrect_524 0x804853d [call] call sym.imp.exit
-sub.sscanf_542 0x80485ab [call] call sym.imp.exit
+EXPECT='sub.sscanf_542 0x80485ab [call] call sym.imp.exit
 sub.strlen_5b9 0x804866f [call] call sym.imp.exit
+sub.Password_Incorrect_524 0x804853d [call] call sym.imp.exit
 '
 run_test
 
@@ -65,9 +65,9 @@ ARGS=
 CMDS='
 aaaa
 axt @ sym.imp.exit'
-EXPECT='sub.Password_Incorrect_524 0x804853d [call] call sym.imp.exit
-sub.sscanf_542 0x80485ab [call] call sym.imp.exit
+EXPECT='sub.sscanf_542 0x80485ab [call] call sym.imp.exit
 sub.strlen_5b9 0x804866f [call] call sym.imp.exit
+sub.Password_Incorrect_524 0x804853d [call] call sym.imp.exit
 '
 run_test
 
@@ -81,8 +81,8 @@ axt @ sym.imp.msvcrt.dll_printf
 e asm.relsub=true
 axt @ sym.imp.msvcrt.dll_printf
 '
-EXPECT='entry0 0xffffffffffff100a [data] call qword [rip + 0xd8]
-entry0 0xffffffffffff100a [data] call qword sym.imp.msvcrt.dll_printf
+EXPECT='entry0 0xffffffffffff100a [call] call qword [rip + 0xd8]
+entry0 0xffffffffffff100a [call] call qword sym.imp.msvcrt.dll_printf
 '
 run_test
 
@@ -226,8 +226,8 @@ ax-*
 axq
 '
 EXPECT='0x0000000a -> 0x00000014  unk
-0x0000001e -> 0x00000028  unk
 0x0000000a -> 0x00000014  unk
+0x0000001e -> 0x00000028  unk
 '
 run_test
 
