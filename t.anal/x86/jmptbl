@@ -332,10 +332,10 @@ CMDS='aaa
 CC. @@ switch
 '
 EXPECT='switch table (275 cases) at 0x4140b0
-switch table (5 cases) at 0x414088
-switch table (121 cases) at 0x413cc0
 switch table (54 cases) at 0x41a048
 switch table (54 cases) at 0x419e98
+switch table (5 cases) at 0x414088
+switch table (121 cases) at 0x413cc0
 switch table (54 cases) at 0x41a418
 switch table (54 cases) at 0x41a268
 switch table (127 cases) at 0x418e58
