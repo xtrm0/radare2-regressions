@@ -49,7 +49,7 @@ run_test
 NAME="afb twice"
 FILE=../../bins/pe/bcc1.ex
 CMDS='e anal.recont=true
-e anal.depth=200
+e anal.depth=100
 e anal.hasnext=true
 af @ 0x40dfd0
 af;afb;afb @ 0x40dfd0
