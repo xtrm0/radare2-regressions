@@ -7,7 +7,7 @@ NAME="aaa with axt"
 FILE=../../bins/anal/keygen.exe
 CMDS="aaa
 axt 0x4bffb0"
-EXPECT="(nofunc) 0x4bfe53 [data] mov edx, 0x4bffb0
+EXPECT="(nofunc) 0x4bfe53 [DATA] mov edx, 0x4bffb0
 "
 run_test
 
