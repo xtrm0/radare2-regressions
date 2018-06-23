@@ -1,0 +1,71 @@
+NAME=Backward param type propgation
+FILE=../bins/anal/back1
+CMDS=<<EXPECT
+aa
+s main
+afta
+afv
+EXPECT=<<RUN
+var size_t size @ rbp-0x14
+var char * dest @ rbp-0x10
+var char * src @ rbp-0x8
+RUN
+
+NAME=Forward param type propgation
+FILE=../bins/anal/forward1
+CMDS=<<EXPECT
+aa
+s main
+afta
+afv
+EXPECT=<<RUN
+var size_t size @ rbp-0x14
+var char * ptr @ rbp-0x10
+var char * src @ rbp-0x8
+RUN
+
+NAME=Propgation via value
+FILE=../bins/anal/follow_ptr
+CMDS=<<EXPECT
+aa
+s main
+afta
+afv
+EXPECT=<<RUN
+var size_t local_1ch @ rbp-0x1c
+var char * local_18h @ rbp-0x18
+var char * s @ rbp-0x10
+var int local_8h @ rbp-0x8
+RUN
+
+NAME=General type propgation
+FILE=../bins/anal/hello_world
+CMDS=<<EXPECT
+aa
+s main
+afta
+afv
+EXPECT=<<RUN
+var size_t local_20h @ rbp-0x20
+var size_t size @ rbp-0x1c
+var char * src @ rbp-0x18
+var char * s2 @ rbp-0x10
+var char * dest @ rbp-0x8
+RUN
+
+NAME=32-bit bin type propgation
+FILE=../bins/anal/hello_world32
+CMDS=<<EXPECT
+aa
+s main
+afta
+afv
+EXPECT=<<RUN
+arg int arg_4h @ esp+0x4
+var char * src @ ebp-0x1c
+var char * s2 @ ebp-0x18
+var size_t local_14h @ ebp-0x14
+var size_t size @ ebp-0x10
+var char * dest @ ebp-0xc
+var int local_8h @ ebp-0x8
+RUN
