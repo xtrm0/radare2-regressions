@@ -2,6 +2,35 @@
 # GPL 3+ - Copyright (C) 2012  pancake, Edd Barrett, Simon Ruderich
 for a in . .. ../.. ; do [ -e $a/tests.sh ] && . $a/tests.sh ; done
 
+
+NAME='af anal.endsize'
+BROKEN=
+FILE=../../bins/elf/echo-bin
+ARGS=
+CMDS='
+e anal.endsize=0
+aaa
+s 0x1144
+afi~name
+'
+EXPECT='name: main
+'
+run_test
+
+NAME='af anal.endsize'
+BROKEN=1
+FILE=../../bins/elf/echo-bin
+ARGS=
+CMDS='
+e anal.endsize=1
+aaa
+s 0x1144
+afi~name
+'
+EXPECT='name: main
+'
+run_test
+
 NAME='af jmp after ret'
 BROKEN=
 FILE=malloc://512
