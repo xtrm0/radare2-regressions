@@ -234,7 +234,7 @@ CMDS64=ZSBhc20uYXJjaD1hcm0KZSBhc20uYml0cz0zMgplIGFzbS5jb21tZW50cz1mYWxzZQplIGFzb
 RUN
 NAME=ELF ARM: vars
 FILE=../bins/elf/analysis/arm-ls
-EXPECT64=MTENCg==
+EXPECT64=MTIK
 CMDS64=CmUgYXNtLmNhbGxzPWZhbHNlCnMgbWFpbgphZgpwZCAxfmxvY2FsPwoK
 RUN
 NAME=sp vars arm16
