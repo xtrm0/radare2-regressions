@@ -778,7 +778,8 @@ FILE=../bins/elf/analysis/fast
 CMDS=<<EXPECT
 e asm.bytes=false
 e asm.imm.str=true
+f- @ 0x08048574
 pd 1 @ 0x08048444
 EXPECT=<<RUN
-            0x08048444      push str.i__i__i                           ; 0x8048574 ; "%i %i %i\n"
+            0x08048444      push 0x8048574
 RUN
