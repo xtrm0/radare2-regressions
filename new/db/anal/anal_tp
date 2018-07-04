@@ -82,3 +82,16 @@ arg int arg2 @ rsi
 arg int arg3 @ rdx
 arg int arg4 @ rcx
 RUN
+
+NAME=Type propgation for reg based arg
+FILE=../bins/anal/arg
+CMDS=<<EXPECT
+aa
+afta
+s sym.funcarg
+afvr
+EXPECT=<<RUN
+arg char * arg1 @ rdi
+arg char * arg2 @ rsi
+arg int arg3 @ rdx
+arg size_t arg4 @ rcx
