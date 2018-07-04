@@ -419,6 +419,9 @@ class NewRegressions {
               test.expect += lines[i] + '\n';
               i++;
             }
+            if (lines[i] === undefined) {
+              throw new Error('Unexpected EOF in EXPECT -- did you forget a ' + endString + '?');
+            }
             i--;
           } else {
             const delim = vt.charAt(0);

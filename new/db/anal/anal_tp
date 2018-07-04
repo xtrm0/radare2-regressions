@@ -95,3 +95,4 @@ arg char * arg1 @ rdi
 arg char * arg2 @ rsi
 arg int arg3 @ rdx
 arg size_t arg4 @ rcx
+RUN
