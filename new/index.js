@@ -415,7 +415,7 @@ class NewRegressions {
             test.endString = endString;
             test.expect = '';
             i++;
-            while (lines[i] && !lines[i].startsWith(endString)) {
+            while (lines[i] !== undefined && !lines[i].startsWith(endString)) {
               test.expect += lines[i] + '\n';
               i++;
             }
