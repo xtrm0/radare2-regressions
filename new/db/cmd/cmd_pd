@@ -788,7 +788,12 @@ FILE=../bins/elf/strenc
 CMDS=<<EXPECT
 e asm.bytes=false
 e asm.imm.str=true
-pd 1 @ 0x004016e3
+e asm.strenc=utf16le
+pd 1 @ 0x004016ca
+f str.fence @ 0x40235a
+e asm.cmt.off=false
+pd 1 @ 0x004016ca
 EXPECT=<<RUN
-            0x004016e3      mov edi, sym.std::wcout                    ; obj.std::wcout ; 0x604160
+            0x004016ca      mov edi, 0x40235a                          ; 'Z#@' ; u"\u2520\u2542-\u2500-\u2500\u2542\u2528 is a fence with embedded double zeros\n"
+            0x004016ca      mov edi, str.fence                         ; u"\u2520\u2542-\u2500-\u2500\u2542\u2528 is a fence with embedded double zeros\n"
 RUN
