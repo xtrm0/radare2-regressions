@@ -6,6 +6,7 @@ EXPECT=<<RUN
 0x00400410
 0x00400410
 RUN
+
 NAME=baddr > 0
 FILE=../bins/elf/analysis/hello-linux-x86_64
 CMDS=<<EXPECT
@@ -14,6 +15,7 @@ EXPECT=<<RUN
 0x00400410
 0x00800410
 RUN
+
 NAME=baddr 0
 FILE=../bins/elf/analysis/hello-linux-x86_64
 CMDS=<<EXPECT
@@ -22,6 +24,7 @@ EXPECT=<<RUN
 0x00400410
 0x00000410
 RUN
+
 NAME=laddr 0
 FILE=../bins/elf/analysis/hello-linux-x86_64
 CMDS=<<EXPECT
@@ -32,6 +35,7 @@ vaddr=0x00400410 paddr=0x00000410 baddr=0x00400000 laddr=0x00000000 haddr=0x0000
 
 1 entrypoints
 RUN
+
 NAME=laddr 0 && baddr 0
 FILE=../bins/elf/analysis/hello-linux-x86_64
 CMDS=<<EXPECT
@@ -42,6 +46,7 @@ vaddr=0x00000410 paddr=0x00000410 baddr=0x00000000 laddr=0x00000000 haddr=0x0000
 
 1 entrypoints
 RUN
+
 NAME=rabin2 -K md5 -S file
 FILE=../bins/pe/a.exe
 CMDS=<<EXPECT
@@ -54,6 +59,7 @@ EXPECT=<<RUN
 03 0x00000000     0 0x00404000  4096 -rw- md5=d41d8cd98f00b204e9800998ecf8427e .bss
 04 0x00001200  1024 0x00405000  4096 -rw- md5=963212dc58a74f32e0f6ffce84dcf7ea .idata
 RUN
+
 NAME=rabin2 -s file pe
 FILE=../bins/pe/a.exe
 CMDS=<<EXPECT
@@ -61,6 +67,7 @@ CMDS=<<EXPECT
 EXPECT=<<RUN
 21
 RUN
+
 NAME=rabin2 -s file elf
 FILE=../bins/elf/analysis/x86-helloworld-gcc
 CMDS=<<EXPECT
@@ -68,6 +75,7 @@ CMDS=<<EXPECT
 EXPECT=<<RUN
 66
 RUN
+
 NAME=rabin2 -S, -SS, -rS and -rSS file elf
 FILE=../bins/elf/analysis/x86-helloworld-gcc
 CMDS=<<EXPECT
@@ -89,6 +97,7 @@ EXPECT=<<RUN
 120
 36
 RUN
+
 NAME=rabin2 -z pe
 FILE=../bins/pe/a.exe
 CMDS=<<EXPECT
@@ -96,6 +105,7 @@ CMDS=<<EXPECT
 EXPECT=<<RUN
 4
 RUN
+
 NAME=rabin2 -z elf
 FILE=../bins/elf/analysis/x86-helloworld-gcc
 CMDS=<<EXPECT
@@ -103,6 +113,7 @@ CMDS=<<EXPECT
 EXPECT=<<RUN
 1
 RUN
+
 NAME=rabin2 -G 0x1000 -rs fatmach0
 FILE=../bins/mach0/fatmach0-3true
 CMDS=<<EXPECT
@@ -110,6 +121,7 @@ CMDS=<<EXPECT
 EXPECT=<<RUN
 3
 RUN
+
 NAME=rabin2 -G 0x1300 -rs fatmach0
 FILE=../bins/mach0/fatmach0-3true
 CMDS=<<EXPECT
@@ -117,6 +129,7 @@ CMDS=<<EXPECT
 EXPECT=<<RUN
 1
 RUN
+
 NAME=rabin2 -G 0x1000 -e fatmach0
 FILE=../bins/mach0/fatmach0-3true
 CMDS=<<EXPECT
@@ -127,6 +140,7 @@ vaddr=0x100000ef8 paddr=0x00001ef8 baddr=0x100000000 laddr=0x00001000 haddr=0x00
 
 1 entrypoints
 RUN
+
 NAME=rabin2 -e fatmach0
 BROKEN=1
 FILE=../bins/mach0/fatmach0-3true
@@ -138,6 +152,7 @@ vaddr=0x100000ef8 paddr=0x00001ef8 baddr=0x100000000 laddr=0x00001000 haddr=0x00
 
 1 entrypoints
 RUN
+
 NAME=rabin2 -G 0x5000 -e fatmach0
 FILE=../bins/mach0/fatmach0-3true
 CMDS=<<EXPECT
@@ -148,6 +163,7 @@ vaddr=0x00001f44 paddr=0x00005f44 baddr=0x00001000 laddr=0x00005000 haddr=0x0000
 
 1 entrypoints
 RUN
+
 NAME=rabin2 -a x86 -b 32 -e fatmach0
 BROKEN=1
 FILE=../bins/mach0/fatmach0-3true
@@ -159,6 +175,7 @@ vaddr=0x00001f44 paddr=0x00005f44 baddr=0x00001000 laddr=0x00005000 haddr=0x0000
 
 1 entrypoints
 RUN
+
 NAME=rabin2 -B 0x2000000 -G 0x1000 -e fatmach0
 FILE=../bins/mach0/fatmach0-3true
 CMDS=<<EXPECT
@@ -169,6 +186,7 @@ vaddr=0x02000ef8 paddr=0x00001ef8 baddr=0x02000000 laddr=0x00001000 haddr=0x0000
 
 1 entrypoints
 RUN
+
 NAME=rabin2 -B 0x2000000 -e arm64
 FILE=../bins/mach0/hello-ios-arm64
 CMDS=<<EXPECT
@@ -179,6 +197,7 @@ vaddr=0x02007f34 paddr=0x00007f34 baddr=0x02000000 laddr=0x00000000 haddr=0x0000
 
 1 entrypoints
 RUN
+
 NAME=rabin2 -B 0x2000000 -e arm64
 FILE=../bins/mach0/hello-ios-arm64
 CMDS=<<EXPECT
@@ -189,6 +208,7 @@ vaddr=0x02007f34 paddr=0x00007f34 baddr=0x02000000 laddr=0x00000000 haddr=0x0000
 
 1 entrypoints
 RUN
+
 NAME=rabin2 -a x86 -b 32 -i fatmach0
 FILE=../bins/mach0/fatmach0-3true
 CMDS=<<EXPECT
@@ -198,6 +218,7 @@ EXPECT=<<RUN
    0 0x00001f94    NONE    FUNC exit
    1 0x00000000    NONE    FUNC dyld_stub_binder
 RUN
+
 NAME=rabin2 -G 0x5000 -i fatmach0
 FILE=../bins/mach0/fatmach0-3true
 CMDS=<<EXPECT
@@ -207,6 +228,7 @@ EXPECT=<<RUN
    0 0x00001f94    NONE    FUNC exit
    1 0x00000000    NONE    FUNC dyld_stub_binder
 RUN
+
 NAME=rabin2 -qqz
 FILE=../bins/elf/analysis/hello-linux-x86_64
 CMDS=<<EXPECT
@@ -214,6 +236,7 @@ CMDS=<<EXPECT
 EXPECT=<<RUN
 Hello World
 RUN
+
 NAME=rabin2 -qOr
 FILE=../bins/elf/analysis/ls-linux-x86_64-zlul
 CMDS=<<EXPECT
@@ -221,6 +244,7 @@ CMDS=<<EXPECT
 !rabin2 -qOr/.data/-1 ${FILE}
 EXPECT=<<RUN
 RUN
+
 NAME=rabin2 -g
 FILE=../bins/elf/analysis/x86-helloworld-gcc
 CMDS=!rabin2 -g ${R2_FILE}

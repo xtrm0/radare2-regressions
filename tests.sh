@@ -87,7 +87,7 @@ dump_test() {
     echo "ARGS=$ARGS"
   fi
   echo "CMDS=<<EXPECT"
-  echo "$CMDS"
+  printf "$CMDS"
   if [ -n "$EXPECT_ERR" ]; then
     echo "EXPECT=<<EXPECT_ERR"
   else
@@ -99,6 +99,7 @@ dump_test() {
     echo "$EXPECT_ERR"
   fi
   echo "RUN"
+  echo
   test_reset
 }
 
