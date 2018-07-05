@@ -55,11 +55,9 @@ io:
 	$(SHELL) run_tests.sh t.io
 
 
-anal: anal.others anal.x86
+anal: anal.others
 anal.others:
 	$(SHELL) run_tests.sh t.anal/others_anal
-anal.x86:
-	$(SHELL) run_tests.sh t.anal/x86
 
 
 esil:
