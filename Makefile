@@ -55,15 +55,9 @@ io:
 	$(SHELL) run_tests.sh t.io
 
 
-anal: anal.8051 anal.java anal.others anal.tricore anal.x86
-anal.8051:
-	$(SHELL) run_tests.sh t.anal/8051
-anal.java:
-	$(SHELL) run_tests.sh t.anal/java
+anal: anal.others anal.x86
 anal.others:
 	$(SHELL) run_tests.sh t.anal/others_anal
-anal.tricore:
-	$(SHELL) run_tests.sh t.anal/tricore
 anal.x86:
 	$(SHELL) run_tests.sh t.anal/x86
 
