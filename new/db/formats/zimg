@@ -1,0 +1,5 @@
+NAME=Test 32-bit arm
+FILE=../bins/zimg/arm32
+EXPECT64=YXJjaCAgICAgYXJtCgo=
+CMDS64=aUl+YXJjaAoK
+RUN
