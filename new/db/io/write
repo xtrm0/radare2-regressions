@@ -1,0 +1,6 @@
+NAME=write
+FILE=.newfile
+ARGS=-w
+EXPECT64=MHg0CjZhNjU2YTY1Cgo=
+CMDS64=CmUgaW8udmE9MAp3IGplamUKaX5zaXplWzFdCnA4IDQKcm0gLi8ubmV3ZmlsZQoK
+RUN

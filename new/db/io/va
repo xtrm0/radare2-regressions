@@ -1,0 +1,6 @@
+NAME=io/va-entry0 linux-arm
+FILE=../bins/elf/analysis/hello-android-arm
+BROKEN=1
+EXPECT64=MHgwMDAwODMwMAoweDAwMDAwMzAwCgo=
+CMDS64=CmllKn4weFs0XQplIGlvLnZhPTAKaWUqfjB4WzRdCgo=
+RUN

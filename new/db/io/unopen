@@ -1,0 +1,10 @@
+NAME=unopen read issue
+FILE=../bins/elf/analysis/hello-linux-x86_64
+EXPECT64=MzEKMDAKMzEKCg==
+CMDS64=CnA4IDEgQCBlbnRyeTAKZiBmZD1gbyBtYWxsb2M6Ly8xMjhgCnA4IDEgQCAwCm8tZmQKcDggMSBAIGVudHJ5MAoK
+RUN
+NAME=unopen read issue 2
+FILE=../bins/elf/analysis/hello-linux-x86_64
+EXPECT64=MzEKMzEKMzEKCg==
+CMDS64=CnA4IDEgQCBlbnRyeTAKZiBmZD1gbyBtYWxsb2M6Ly8xMjhgCnA4IDEgQCBlbnRyeTAKby1mZApwOCAxIEAgZW50cnkwCgo=
+RUN

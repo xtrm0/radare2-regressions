@@ -1,0 +1,25 @@
+NAME=io-zip
+FILE=zip://../bins/java/example.zip
+EXPECT64=MCByZXNlYXJjaF9kYXRhL2V4cGVyaW1lbnQvZGVjb21waWxlci9kdW1wZWRfamFyX2RlYy9jLmNsYXNzCgo=
+CMDS64=cQo=
+RUN
+NAME=io-zip entrypoints for c.class
+FILE=zip://../bins/java/example.zip//research_data/experiment/decompiler/dumped_jar_dec/c.class
+EXPECT64=MHgwMDAwMDJhZgoweDAwMDAwMmRhCjB4MDAwMDAzMTIKMHgwMDAwMDNhYgoK
+CMDS64=aWVxCg==
+RUN
+NAME=io-zip entrypoints for c.class
+FILE=zip://../bins/java/example.zip::0
+EXPECT64=MHgwMDAwMDJhZgoweDAwMDAwMmRhCjB4MDAwMDAzMTIKMHgwMDAwMDNhYgoK
+CMDS64=aWVxCg==
+RUN
+NAME=io-zip hello.apk
+FILE=apk://../bins/dex/Hello.apk
+EXPECT64=MHgwMDAwMDFjMAoK
+CMDS64=aWVxCg==
+RUN
+NAME=io-zip hello.apk
+FILE=zip://../bins/dex/Hello.apk
+EXPECT64=MCBjbGFzc2VzLmRleAoK
+CMDS64=aWVxCg==
+RUN
