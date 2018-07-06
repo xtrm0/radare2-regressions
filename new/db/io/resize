@@ -2,11 +2,11 @@ NAME=r xx
 ARGS=-w
 FILE=.resize.V1OzXt
 EXPECT64=MAoweGEKMHg0CjB4YQoK
-CMDS64=Cml+XnNpemVbMV0KciAxMAppfl5zaXplWzFdCnIgNAppfl5zaXplWzFdCnIrNgppfl5zaXplWzFdCgo=
+CMDS64=aX5ec2l6ZVsxXQpyIDEwCml+XnNpemVbMV0KciA0Cml+XnNpemVbMV0Kcis2Cml+XnNpemVbMV0KIXJtICR7UjJfRklMRX0K
 RUN
 NAME=r/wx nn
 ARGS=-w
-FILE=.resize.V1OzXt
+FILE=.resize.V11zXt
 EXPECT64=MAoweDMKMHhiCmhlbGxvIHdvcmxkCgo=
-CMDS64=CmUgaW8udmE9MAppfl5zaXplWzFdCnd4IDAxMDIwMwppfl5zaXplWzFdCncgaGVsbG8gd29ybGQKaX5ec2l6ZVsxXQpwc3oKCg==
+CMDS64=ZSBpby52YT0wCml+XnNpemVbMV0Kd3ggMDEwMjAzCml+XnNpemVbMV0KdyBoZWxsbyB3b3JsZAppfl5zaXplWzFdCnBzegohcm0gJHtSMl9GSUxFfQo=
 RUN
