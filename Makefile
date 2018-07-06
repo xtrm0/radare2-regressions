@@ -58,15 +58,11 @@ io:
 esil:
 	$(SHELL) run_tests.sh t.esil
 
-formats: format.bflt format.coff format.smd format.vsf format.dex format.elf format.firmware format.java format.mach0 format.mangling format.mdmp format.msil format.omf format.others format.pdb format.pe format.xbe format.nes format.gba format.wasm
+formats: format.coff format.smd format.vsf format.dex format.elf format.firmware format.java format.mach0 format.mangling format.mdmp format.msil format.omf format.others format.pdb format.pe format.nes format.gba format.wasm
 format.vsf:
 	$(SHELL) run_tests.sh t.formats/vsf
 format.smd:
 	$(SHELL) run_tests.sh t.formats/smd
-format.coff:
-	$(SHELL) run_tests.sh t.formats/coff
-format.bflt:
-	$(SHELL) run_tests.sh t.formats/bflt
 format.dex:
 	$(SHELL) run_tests.sh t.formats/dex
 format.elf:
@@ -91,8 +87,6 @@ format.pdb:
 	$(SHELL) run_tests.sh t.formats/pdb
 format.pe:
 	$(SHELL) run_tests.sh t.formats/pe
-format.xbe:
-	$(SHELL) run_tests.sh t.formats/xbe
 format.nes:
 	$(SHELL) run_tests.sh t.formats/nes
 format.gba:
