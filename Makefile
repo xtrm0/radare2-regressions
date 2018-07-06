@@ -58,7 +58,7 @@ io:
 esil:
 	$(SHELL) run_tests.sh t.esil
 
-formats: format.coff format.smd format.vsf format.elf format.firmware format.java format.mach0 format.mangling format.mdmp format.msil format.omf format.others format.pdb format.pe format.nes format.gba format.wasm
+formats: format.smd format.vsf format.elf format.firmware format.java format.mach0 format.mangling format.mdmp format.msil format.omf format.others format.pdb format.pe format.nes format.gba format.wasm
 format.vsf:
 	$(SHELL) run_tests.sh t.formats/vsf
 format.smd:
