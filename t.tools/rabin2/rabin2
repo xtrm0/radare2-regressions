@@ -12,14 +12,6 @@ EXPECT_ERR="r_core: Cannot open file
 "
 run_test
 
-NAME='TODO: test on pie fatmach0'
-FILE=../../bins/mach0/fatmach0-3true
-BROKEN=1
-ARGS=
-CMDS='!rabin2 -B 0x2000000 -G 0x1000 -e ${R2_FILE}'
-EXPECT='???'
-run_test
-
 NAME='rabin2 -qOp/.data/rwx on PE32'
 FILE=../../bins/pe/test.exe
 ARGS=

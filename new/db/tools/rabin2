@@ -187,6 +187,15 @@ vaddr=0x02000ef8 paddr=0x00001ef8 baddr=0x02000000 laddr=0x00001000 haddr=0x0000
 1 entrypoints
 RUN
 
+NAME=TODO: test on pie fatmach0
+BROKEN=1
+FILE=../../bins/mach0/fatmach0-3true
+CMDS=<<EXPECT
+!rabin2 -B 0x2000000 -G 0x1000 -e ${R2_FILE}
+EXPECT=<<RUN
+???
+RUN
+
 NAME=rabin2 -B 0x2000000 -e arm64
 FILE=../bins/mach0/hello-ios-arm64
 CMDS=<<EXPECT

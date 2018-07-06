@@ -88,12 +88,20 @@ dump_test() {
   fi
   echo "CMDS=<<EXPECT"
   printf "$CMDS"
+  END=$(printf "$CMDS" | tail -c 1)
+  if [ "$END" != "" ]; then
+    echo
+  fi
   if [ -n "$EXPECT_ERR" ]; then
     echo "EXPECT=<<EXPECT_ERR"
   else
     echo "EXPECT=<<RUN"
   fi
   printf "$EXPECT"
+  END=$(printf "$EXPECT" | tail -c 1)
+  if [ "$END" != "" ]; then
+    echo
+  fi
   if [ -n "$EXPECT_ERR" ]; then
     echo "EXPECT_ERR=<<RUN"
     echo "$EXPECT_ERR"
