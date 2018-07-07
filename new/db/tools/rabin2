@@ -189,7 +189,7 @@ RUN
 
 NAME=TODO: test on pie fatmach0
 BROKEN=1
-FILE=../../bins/mach0/fatmach0-3true
+FILE=../bins/mach0/fatmach0-3true
 CMDS=<<EXPECT
 !rabin2 -B 0x2000000 -G 0x1000 -e ${R2_FILE}
 EXPECT=<<RUN
