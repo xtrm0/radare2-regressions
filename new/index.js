@@ -528,6 +528,13 @@ class NewRegressions {
   }
 
   checkTest (test) {
+    if (typeof test.stdout !== 'undefined') { // && test.expect) {
+      if (process.platform === 'win32') {
+        /* Delete \r on windows.
+         * Note that process.platform is always win32 even on Windows 64 bits */
+        test.stdout = test.stdout.replace(/\r/g, '');
+      }
+    }
     if (test.expect) {
       test.stdoutFail = test.expect64 || test.expect64 === undefined
         ? test.expect.trim() !== test.stdout.trim()
@@ -536,13 +543,6 @@ class NewRegressions {
       test.stdoutFail = false;
     }
     test.stderrFail = test.expectErr ? test.expectErr !== test.stderr : false;
-    if (typeof test.stdout !== 'undefined') { // && test.expect) {
-      if (process.platform === 'win32') {
-        /* Delete \r on windows.
-         * Note that process.platform is always win32 even on Windows 64 bits */
-        test.stdout = test.stdout.replace(/\r/g, '');
-      }
-    }
     test.passes = !test.stdoutFail && !test.stderrFail;
     const status = (test.passes)
     ? (test.broken ? colors.yellow('[FX]') : colors.green('[OK]'))
