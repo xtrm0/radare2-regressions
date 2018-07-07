@@ -131,3 +131,37 @@ EXPECT=<<RUN
 ; arg int arg_ch @ ebp+0xc
 0x0000054d      55             push ebp
 RUN
+
+NAME=Type Propagation
+FILE=../bins/pe/debugme.exe
+BROKEN=1
+CMDS=<<EXPECT
+aaaa
+pd 1 @ 0x00401792~?[n
+pd 1 @ 0x00401796~?[c
+pd 1 @ 0x0040179e~?[s
+pd 1 @ 0x004017b1~?[n
+pd 1 @ 0x004017b5~?[c
+pd 1 @ 0x004017bd~?[s
+pd 1 @ 0x0040186a~?[s2
+pd 1 @ 0x0040186e~?[s1
+pd 1 @ 0x0040152f~?[dwInitParam
+pd 1 @ 0x00401537~?[lpDialogFunc
+pd 1 @ 0x0040153f~?[hWndParent
+pd 1 @ 0x00401547~?[lpTemplateName
+pd 1 @ 0x00401554~?[hInstance
+EXPECT=<<RUN
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+RUN
