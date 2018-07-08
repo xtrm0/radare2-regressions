@@ -35,7 +35,7 @@ EXPECT=<<RUN
 var size_t local_1ch @ rbp-0x1c
 var char * local_18h @ rbp-0x18
 var char * s @ rbp-0x10
-var int local_8h @ rbp-0x8
+var char * local_8h @ rbp-0x8
 RUN
 
 NAME=General type propgation
@@ -108,8 +108,8 @@ s sym.funcarg
 pd 1
 EXPECT=<<RUN
 (fcn) sym.funcarg 154
-  sym.funcarg (char *arg1, int arg2);
-; var int local_ch @ rbp-0xc
+  sym.funcarg (char *arg1, unsigned int arg2);
+; var unsigned int local_ch @ rbp-0xc
 ; var char *local_8h @ rbp-0x8
 0x0000068a      55             push rbp
 RUN
@@ -125,10 +125,10 @@ s sym.funcarg
 pd 1
 EXPECT=<<RUN
 (fcn) sym.funcarg 147
-  sym.funcarg (char *arg_8h, int arg_ch);
+  sym.funcarg (char *arg_8h, unsigned int arg_ch);
 ; var int local_4h @ ebp-0x4
 ; arg char *arg_8h @ ebp+0x8
-; arg int arg_ch @ ebp+0xc
+; arg unsigned int arg_ch @ ebp+0xc
 0x0000054d      55             push ebp
 RUN
 
@@ -164,4 +164,46 @@ EXPECT=<<RUN
 1
 1
 1
+RUN
+
+NAME=Double pointer test
+FILE=../bins/anal/double_ptr
+CMDS=<<EXPECT
+aa
+afta
+s main
+afv~ptr
+EXPECT=<<RUN
+var char ** ptr @ rbp-0x18
+RUN
+
+NAME=Signed and unsigned test
+FILE=../bins/anal/signed_test
+CMDS=<<EXPECT
+aa
+afta
+s main
+afv~sign
+EXPECT=<<RUN
+var signed int local_34h @ rbp-0x34
+var signed int local_30h @ rbp-0x30
+var unsigned int local_28h @ rbp-0x28
+RUN
+
+NAME=flagspace analysis
+FILE=../bins/anal/flagspace
+CMDS=<<EXPECT
+aa
+afta
+s main
+afv
+EXPECT=<<RUN
+var int local_34h @ rbp-0x34
+var signed int local_30h @ rbp-0x30
+var unsigned int local_2ch @ rbp-0x2c
+var FILE * stream @ rbp-0x28
+var char * s @ rbp-0x20
+var char * local_18h @ rbp-0x18
+var char * local_10h @ rbp-0x10
+var int local_8h @ rbp-0x8
 RUN
