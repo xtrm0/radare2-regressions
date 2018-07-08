@@ -528,11 +528,14 @@ class NewRegressions {
   }
 
   checkTest (test) {
-    if (typeof test.stdout !== 'undefined') { // && test.expect) {
-      if (process.platform === 'win32') {
-        /* Delete \r on windows.
-         * Note that process.platform is always win32 even on Windows 64 bits */
+    if (process.platform === 'win32') {
+      /* Delete \r on windows.
+       * Note that process.platform is always win32 even on Windows 64 bits */
+      if (typeof test.stdout !== 'undefined') { // && test.expect) {
         test.stdout = test.stdout.replace(/\r/g, '');
+      }
+      if (typeof test.stderr !== 'undefined') {
+        test.stderr = test.stderr.replace(/\r/g, '');
       }
     }
     if (test.expect) {
