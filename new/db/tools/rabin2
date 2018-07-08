@@ -262,6 +262,36 @@ CMDS=<<EXPECT
 EXPECT=<<RUN
 RUN
 
+NAME=rabin2 -qOp/.data/rwx on PE32
+FILE=../bins/pe/test.exe
+CMDS=<<EXPECT
+rm /tmp/rabin2testpe1.exe
+!rabin2 -qOp/.data/rwx -o/tmp/rabin2testpe1.exe ${R2_FILE}
+!rabin2 -S /tmp/rabin2testpe1.exe
+rm /tmp/rabin2testpe1.exe
+EXPECT=<<RUN
+wx e0000040 @ 0x244
+[Sections]
+00 0x00000400 35328 0x00401000 36864 -r-x .text
+01 0x00008e00  9216 0x0040a000 12288 -r-- .rdata
+02 0x0000b200  4096 0x0040d000 12288 -rwx .data
+03 0x0000c200   512 0x00410000  4096 -r-- .rsrc
+04 0x0000c400  3584 0x00411000  4096 -r-- .reloc
+RUN
+
+NAME=rabin2 -qOp//8 on PE32+
+FILE=../bins/pe/normal64.exe
+CMDS=<<EXPECT
+rm /tmp/rabin2testpe2.exe
+!rabin2 -qOp//8 -o/tmp/rabin2testpe2.exe ${R2_FILE}
+!rabin2 -S /tmp/rabin2testpe2.exe
+rm /tmp/rabin2testpe2.exe
+EXPECT=<<RUN
+wx 10000000 @ 0x16c
+[Sections]
+00 0x00000200   512 0x00401000  4096 s--- sect_0
+RUN
+
 NAME=rabin2 -g
 FILE=../bins/elf/analysis/x86-helloworld-gcc
 CMDS=!rabin2 -g ${R2_FILE}
