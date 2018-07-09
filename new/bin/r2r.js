@@ -152,7 +152,7 @@ function main (argv) {
           return cb();
         }
         const test = nr.queue.pop();
-        if (test.broken) {
+        if (test.broken || test.fuzz) {
           return next();
         }
         function next () {

@@ -184,6 +184,7 @@ class NewRegressions {
           test.death = new Date();
           test.lifetime = test.death - test.birth;
           if (child.error) {
+            test.fuzz = true;
             test.expectErr = 'N';
             test.stderr = 'X';
             test.spawnArgs = args;
@@ -606,7 +607,7 @@ class NewRegressions {
       if (test.stdoutFail && test.stderrFail) {
         console.log();
       }
-      if (test.stderrFail) {
+      if (test.stderrFail && test.fuzz === undefined) {
         if (showHeaders) {
           console.log('--> stderr\n');
         }
@@ -638,14 +639,16 @@ class NewRegressions {
           }
         }
       }
-      if (!test.stdoutFail && test.stderrFail) {
-        console.log();
-      }
-      if (test.stderrFail) {
-        if ((test.stderr.match(/\n/g) || []).length > 1) {
-          console.log('<Multiline EXPECT_ERR is not supported>');
-        } else {
-          common.highlightTrailingWs(null, 'EXPECT_ERR=' + test.stderr);
+      if (test.fuzz === undefined) {
+        if (!test.stdoutFail && test.stderrFail) {
+          console.log();
+        }
+        if (test.stderrFail) {
+          if ((test.stderr.match(/\n/g) || []).length > 1) {
+            console.log('<Multiline EXPECT_ERR is not supported>');
+          } else {
+            common.highlightTrailingWs(null, 'EXPECT_ERR=' + test.stderr);
+          }
         }
       }
       if (this.interactive) {
