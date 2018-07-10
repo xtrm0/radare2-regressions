@@ -1,3 +1,6 @@
+const promiseConcurrency = 8;
+const timeoutFuzzed = 60 * 1000;
+
 const co = require('co');
 const colors = require('colors/safe');
 const promisify = require('util').promisify;
@@ -12,8 +15,13 @@ const spawn = require('child_process').spawn;
 const spawnSync = require('child_process').spawnSync;
 const r2promise = require('r2pipe-promise');
 const common = require('./common');
+const promiseLimit = require('promise-limit')
 
-const timeoutFuzzed = 60 * 1000;
+const limit = promiseLimit(promiseConcurrency)
+
+function newPromise(cb) {
+  return limit(_ => new Promise(cb));
+}
 
 // support node < 8
 if (!String.prototype.padStart) {
@@ -22,13 +30,12 @@ if (!String.prototype.padStart) {
     padString = String(padString || ' ');
     if (this.length > targetLength) {
       return String(this);
-    } else {
-      targetLength = targetLength - this.length;
-      if (targetLength > padString.length) {
-        padString += padString.repeat(targetLength / padString.length); // append to original to ensure we are longer than needed
-      }
-      return padString.slice(0, targetLength) + String(this);
     }
+    targetLength = targetLength - this.length;
+    if (targetLength > padString.length) {
+      padString += padString.repeat(targetLength / padString.length); // append to original to ensure we are longer than needed
+    }
+    return padString.slice(0, targetLength) + String(this);
   };
 }
 
@@ -94,7 +101,7 @@ class NewRegressions {
 
   runTestAsm (test, cb) {
     const self = this;
-    return new Promise((resolve, reject) => {
+    return newPromise((resolve, reject) => {
       try {
         co(function * () {
           try {
@@ -116,7 +123,7 @@ class NewRegressions {
 
   runTestBin (test, cb) {
     const testPath = test.path;
-    return new Promise((resolve, reject) => {
+    return newPromise((resolve, reject) => {
       const promises = [];
       const walker = walk(test.path, {followLinks: false});
       walker.on('file', (root, stat, next) => {
@@ -135,7 +142,7 @@ class NewRegressions {
   }
 
   runTestBinFile (test, cb) {
-    return new Promise((resolve, reject) => {
+    return newPromise((resolve, reject) => {
       try {
         co(function * () {
           const args = [
@@ -175,7 +182,7 @@ class NewRegressions {
   }
 
   runTestFuzz (test, cb) {
-    return new Promise((resolve, reject) => {
+    return newPromise((resolve, reject) => {
       try {
         co(function * () {
           const args = ['-c', '?e init', '-qcq', '-A', test.path];
@@ -201,7 +208,7 @@ class NewRegressions {
   }
 
   runTest (test, cb) {
-    return new Promise((resolve, reject) => {
+    return newPromise((resolve, reject) => {
       if (this.argv.l) {
         console.log(test.from.replace('db/', ''), test.name);
         return resolve();
