@@ -546,14 +546,14 @@ class NewRegressions {
         test.stderr = test.stderr.replace(/\r/g, '');
       }
     }
-    if (test.expect) {
+    if (test.expect !== undefined) {
       test.stdoutFail = test.expect64 || test.expect64 === undefined
         ? test.expect.trim() !== test.stdout.trim()
         : test.expect !== test.stdout;
     } else {
       test.stdoutFail = false;
     }
-    test.stderrFail = test.expectErr ? test.expectErr !== test.stderr : false;
+    test.stderrFail = test.expectErr !== undefined ? test.expectErr !== test.stderr : false;
     test.passes = !test.stdoutFail && !test.stderrFail;
     const status = (test.passes)
     ? (test.broken ? colors.yellow('[FX]') : colors.green('[OK]'))
