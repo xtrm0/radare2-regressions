@@ -58,9 +58,7 @@ io:
 esil:
 	$(SHELL) run_tests.sh t.esil
 
-formats: format.vsf format.elf format.mach0 format.mangling format.msil format.others format.pdb format.pe
-format.vsf:
-	$(SHELL) run_tests.sh t.formats/vsf
+formats: format.elf format.mach0 format.mangling format.msil format.others format.pdb format.pe
 format.elf:
 	$(SHELL) run_tests.sh t.formats/elf
 format.mach0:
