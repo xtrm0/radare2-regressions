@@ -58,7 +58,7 @@ io:
 esil:
 	$(SHELL) run_tests.sh t.esil
 
-formats: format.vsf format.elf format.mach0 format.mangling format.mdmp format.msil format.omf format.others format.pdb format.pe
+formats: format.vsf format.elf format.mach0 format.mangling format.msil format.others format.pdb format.pe
 format.vsf:
 	$(SHELL) run_tests.sh t.formats/vsf
 format.elf:
@@ -67,12 +67,8 @@ format.mach0:
 	$(SHELL) run_tests.sh t.formats/mach0
 format.mangling:
 	$(SHELL) run_tests.sh t.formats/mangling
-format.mdmp:
-	$(SHELL) run_tests.sh t.formats/mdmp
 format.msil:
 	$(SHELL) run_tests.sh t.formats/msil
-format.omf:
-	$(SHELL) run_tests.sh t.formats/omf
 format.others:
 	$(SHELL) run_tests.sh t.formats/others
 format.pdb:
