@@ -78,6 +78,7 @@ class NewRegressions {
     for (let row of [
       [path.join('db', 'anal'), this.runTest],
       [path.join('db', 'cmd'), this.runTest],
+      [path.join('db', 'esil'), this.runTest],
       [path.join('db', 'formats'), this.runTest],
       [path.join('db', 'io'), this.runTest],
       [path.join('db', 'tools'), this.runTest],

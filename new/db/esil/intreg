@@ -1,0 +1,10 @@
+NAME=intreg $$
+FILE=-
+EXPECT64=MHhhCgo=
+CMDS64=cyAxMAoiYWUgJCQsMCwrIgo=
+RUN
+NAME=intreg $$
+FILE=-
+EXPECT64=MHhhCgo=
+CMDS64=cyAxMAoiYWUgMCwkJCwrIgo=
+RUN

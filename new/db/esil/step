@@ -1,0 +1,10 @@
+NAME=ds help changing seek
+FILE=-
+EXPECT64=MHg4Cgo=
+CMDS64=cyA4O2RzPyA+IC9kZXYvbnVsbApzCg==
+RUN
+NAME=aes help changing seek
+FILE=-
+EXPECT64=MHgxCgo=
+CMDS64=d3ggNTUKZSBhc20uYXJjaD14ODYKZSBhc20uYml0cz0zMgphZXMKc3IgUEMKcwo=
+RUN
