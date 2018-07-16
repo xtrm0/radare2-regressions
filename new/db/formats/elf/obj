@@ -1,0 +1,36 @@
+NAME=obj entry
+FILE=../bins/elf/analysis/test.obj
+BROKEN=1
+EXPECT64=dmFkZHI9MHgwMDAwMDAwMCBwYWRkcj0weDAwMDAwMDQwIGJhZGRyPTB4MDAwMDAwMDAgbGFkZHI9MHgwMDAwMDAwMCBoYWRkcj0weDAwMDAwMDE4IHR5cGU9cHJvZ3JhbQoK
+CMDS64=aWV+YWRkcgoK
+RUN
+NAME=obj entry
+FILE=../bins/elf/analysis/test.obj
+BROKEN=1
+EXPECT64=dmFkZHI9MHgwMDIwMDAwMCBwYWRkcj0weDAwMDAwMDQwIGJhZGRyPTB4MDAyMDAwMDAgbGFkZHI9MHgwMDAwMDAwMCBoYWRkcj0weDAwMDAwMDE4IHR5cGU9cHJvZ3JhbQoK
+CMDS64=aWV+YWRkcgoK
+RUN
+NAME=obj main address
+FILE=../bins/elf/analysis/test.obj
+BROKEN=1
+EXPECT64=MHgxMAoK
+CMDS64=P3Ygc3ltLm1haW4KCg==
+RUN
+NAME=obj main address
+FILE=../bins/elf/analysis/test.obj
+BROKEN=1
+EXPECT64=MHgyMDAwMTAKCg==
+CMDS64=P3Ygc3ltLm1haW4KCg==
+RUN
+NAME=obj main
+FILE=../bins/elf/analysis/test.obj
+BROKEN=1
+EXPECT64=cHVzaCByYnAKbW92IHJicCwgcnNwCmNhbGwgMHgxOQoK
+CMDS64=cGkgM0Agc3ltLm1haW4KCg==
+RUN
+NAME=obj main baddr
+FILE=../bins/elf/analysis/test.obj
+BROKEN=1
+EXPECT64=cHVzaCByYnAKbW92IHJicCwgcnNwCmNhbGwgMHgyMDAwMTkKCg==
+CMDS64=cGkgM0BzeW0ubWFpbgoK
+RUN

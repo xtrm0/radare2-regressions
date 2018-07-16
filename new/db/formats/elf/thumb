@@ -1,0 +1,65 @@
+NAME=thumb entry0
+FILE=../bins/elf/arm-init
+EXPECT64=W0VudHJ5cG9pbnRzXQp2YWRkcj0weDAwMDAwMmU0IHBhZGRyPTB4MDAwMDAyZTQgYmFkZHI9MHgwMDAwMDAwMCBsYWRkcj0weDAwMDAwMDAwIGhhZGRyPTB4MDAwMDAwMTggdHlwZT1wcm9ncmFtCgoxIGVudHJ5cG9pbnRzCgo=
+CMDS64=aWUKCg==
+RUN
+NAME=thumb entry0
+FILE=../bins/elf/arm-init
+EXPECT64=W0NvbnN0cnVjdG9yc10KdmFkZHI9MHgwMDAwMDJlNCBwYWRkcj0weDAwMDAwMmU0IGJhZGRyPTB4MDAwMDAwMDAgbGFkZHI9MHgwMDAwMDAwMCBoYWRkcj0weDAwMDAwZWQwIHR5cGU9ZmluaQp2YWRkcj0weDAwMDAwMzQ0IHBhZGRyPTB4MDAwMDAzNDQgYmFkZHI9MHgwMDAwMDAwMCBsYWRkcj0weDAwMDAwMDAwIGhhZGRyPTB4MDAwMDBlZDggdHlwZT1pbml0CgoyIGVudHJ5cG9pbnRzCgo=
+CMDS64=aWVlCgo=
+RUN
+NAME=thumb entry0
+FILE=../bins/elf/analysis/thumb
+EXPECT64=MHg4MmYwCgo=
+CMDS64=P3YgZW50cnkwCgo=
+RUN
+NAME=thumb main
+FILE=../bins/elf/analysis/thumb
+EXPECT64=MHg4NDI0Cgo=
+CMDS64=P3Ygc3ltLm1haW4KCg==
+RUN
+NAME=thumb main alignment
+FILE=../bins/elf/analysis/thumb
+EXPECT64=cHVzaCB7cjcsIGxyfQoK
+CMDS64=cyBzeW0ubWFpbgpwaSAxCgo=
+RUN
+NAME=thumb sym
+FILE=../bins/elf/analysis/thumb
+EXPECT64=MDg1IDB4MDAwMDAyYmMgMHgwMDAwODJiYyAgTE9DQUwgTk9UWVBFICAgIDAgX19saWJjX3N0YXJ0X21haW4KMTA3IDB4MDAwMDA0MjQgMHgwMDAwODQyNCBHTE9CQUwgICBGVU5DICAgMTYgbWFpbgowMDEgMHgwMDAwMDJiYyAweDAwMDA4MmJjIEdMT0JBTCAgIEZVTkMgICAxNiBpbXAuX19saWJjX3N0YXJ0X21haW4KCg==
+CMDS64=aXN+bWFpbgoK
+RUN
+NAME=thumb disasm
+FILE=../bins/elf/analysis/thumb
+EXPECT64=cHVzaCB7cjcsIGxyfQoK
+CMDS64=cGkgMUAgc3ltLm1haW4KCg==
+RUN
+NAME=thumb disasm 2
+FILE=../bins/elf/analysis/thumb
+EXPECT64=cHVzaCB7cjcsIGxyfQphZGQgcjcsIHNwLCAwCm1vdnMgcjAsIDB4YQpibCBsb2MuX3RfMQphZGRzIHIwLCByMywgMAptb3Ygc3AsIHI3CnBvcCB7cjcsIHBjfQoK
+CMDS64=cGkgN0Agc3ltLm1haW4KCg==
+RUN
+NAME=mix arm and thumb
+FILE=../bins/elf/analysis/thumb
+EXPECT64=cHVzaCB7cjcsIGxyfQphZGQgcjcsIHNwLCAwCm1vdnMgcjAsIDB4YQpibCBsb2MuX3RfMQphZGRzIHIwLCByMywgMAptb3Ygc3AsIHI3CnBvcCB7cjcsIHBjfQpwdXNoIHtyMywgcjQsIHI1LCByNiwgcjcsIHI4LCBzbCwgbHJ9Cm1vdiByNSwgcjAKbW92IHI2LCByMQptb3YgcjcsIHIyCmxkciByOCwgW3BjLCAweDQ4XQpibCBzeW0uX2luaXQKbGRyIHIzLCBbcGMsIDB4NDRdCgo=
+CMDS64=cGkgMTRAIHN5bS5tYWluCgo=
+RUN
+NAME=arm disasm entry0
+FILE=../bins/elf/analysis/thumb
+EXPECT64=cHVzaCB7cjcsIGxyfQoK
+CMDS64=cGkgMUAgc3ltLm1haW4KCg==
+RUN
+NAME=thumb anal expand
+FILE=../bins/elf/analysis/thumb
+EXPECT64=cHVzaCB7cjcsIGxyfQphZGQgcjcsIHNwLCAwCnB1c2gge3I3LCBscn0KYWRkIHI3LCBzcCwgMAoK
+CMDS64=cGkgMkBzeW0ubWFpbgphZkBzeW0ubWFpbgpwaSAyIEBzeW0ubWFpbgoK
+RUN
+NAME=arm at entry libsimplejni.so
+FILE=../bins/elf/analysis/libsimplejni.so
+EXPECT64=cHVzaCB7ZnAsIGxyfQphZGQgZnAsIHNwLCA0CmxkciByMywgW3BjLCAweGNdCmFkZCByMywgcGMsIHIzCm1vdiByMCwgcjMKYmwgc3ltLmltcC5fX2N4YV9maW5hbGl6ZQpwb3Age2ZwLCBwY30KCg==
+CMDS64=cGkgN0BlbnRyeTAKCg==
+RUN
+NAME=thumb at sym.JNI_OnLoad
+FILE=../bins/elf/analysis/libsimplejni.so
+EXPECT64=cHVzaCB7cjQsIGxyfQpzdWIgc3AsIDgKbW92IHI0LCByMApsZHIgcjAsIFtwYywgMHhiMF0KbGRyIHIxLCBbcGMsIDB4YjBdCmFkZCByMCwgcGMKCg==
+CMDS64=cGkgNkBzeW0uSk5JX09uTG9hZAoK
+RUN

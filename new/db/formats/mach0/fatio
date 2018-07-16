@@ -1,0 +1,36 @@
+NAME=fatmach0 IO test
+FILE=../bins/mach0/fatmach0-3true
+ARGS=-a x86 -b32
+EXPECT64=MHgxZjQ0CjZhMDA4OWU1ODNlNGYwODMKCg==
+CMDS64=P3YgZW50cnkwO3A4IDggQCBlbnRyeTAK
+RUN
+NAME=fatmach0 IO test
+FILE=../bins/mach0/fatmach0-3true
+ARGS=-a x86 -b64
+EXPECT64=MHgxMDAwMDBlZjgKNmEwMDQ4ODllNTQ4ODNlNAoK
+CMDS64=P3YgZW50cnkwO3A4IDggQCBlbnRyeTAK
+RUN
+NAME=fatmach0 PPC entry0
+FILE=../bins/mach0/fatmach0-3true
+ARGS=-a ppc -b32
+EXPECT64=MHgxZjY0Cgo=
+CMDS64=P3YgZW50cnkwCg==
+RUN
+NAME=fatmach0 io symbol test
+FILE=../bins/mach0/fatmach0-3true
+ARGS=-a x86 -b64
+EXPECT64=am1wIHF3b3JkIFtyaXAgKyAweGNhXQoK
+CMDS64=cGkgMSBAIHN5bS5pbXAuZXhpdAo=
+RUN
+NAME=fatmach0 SDB uuid
+FILE=../bins/mach0/fatmach0-3true
+ARGS=-a x86 -b64
+EXPECT64=MzQwNDU2NzE0NTViN2Q3MTA1NGFjZmY2NWYwZGRhYzEKCgo=
+CMDS64=ayBiaW4vY3VyL2luZm8vdXVpZC4wCg==
+RUN
+NAME=fatmach0 SDB uuid
+FILE=../bins/mach0/fatmach0-3true
+ARGS=-a x86 -b32
+EXPECT64=NTQ3OGNmNTYzMjVlYmJiYzZhZDA3MWRmNTg4NWU5ODMKCgo=
+CMDS64=ayBiaW4vY3VyL2luZm8vdXVpZC4wCg==
+RUN

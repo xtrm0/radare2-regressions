@@ -1,0 +1,16 @@
+NAME=anal fcn names with symbols
+FILE=../bins/mach0/libr_bp.dylib
+ARGS=-A
+EXPECT64=MHgwMDAwMDc2MCAgICA3IDM3OSAgICAgICAgICBzeW0uX3JfYnBfbmV3Cgo=
+CMDS64=YWZsfjAwNzYwCgo=
+RUN
+NAME=anal single fcn
+FILE=../bins/mach0/libr_bp.dylib
+EXPECT64=bmFtZTogc3ltLl9yX2JwX25ldwoK
+CMDS64=cyAweDc2MAphZgphZml+bmFtZQoK
+RUN
+NAME=anal main fcn
+FILE=../bins/mach0/ls-osx-x86_64
+EXPECT64=bmFtZTogbWFpbgoK
+CMDS64=YWYKYWZpfm5hbWUKCg==
+RUN

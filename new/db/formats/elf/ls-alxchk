@@ -1,0 +1,5 @@
+NAME=ELF: ls-alchk pie main
+FILE=../bins/elf/analysis/ls-alxchk
+EXPECT64=MHgzYmQwCgo=
+CMDS64=P3YgbWFpbgo=
+RUN

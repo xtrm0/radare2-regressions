@@ -1,0 +1,20 @@
+NAME=mach0 thumb entrypoint bits
+FILE=../bins/mach0/thumb-test
+EXPECT64=MTYKCg==
+CMDS64=ZSBhc20uYml0cwoK
+RUN
+NAME=mach0 thumb entrypoint info
+FILE=../bins/mach0/thumb-test
+EXPECT64=dmFkZHI9MHgwMDAwYmZhNCBwYWRkcj0weDAwMDA3ZmE0IGJhZGRyPTB4MDAwMDQwMDAgbGFkZHI9MHgwMDAwMDAwMCBoYWRkcj0weDAwMDAwMzQ0IHR5cGU9cHJvZ3JhbQoK
+CMDS64=aWV+dmFkZHIKCg==
+RUN
+NAME=mach0 non-thumb symbol on thumb bin
+FILE=../bins/mach0/thumb-test
+EXPECT64=bGRyIHBjLCBbcGMsIC00XQoK
+CMDS64=cGkgMUAgc3ltLmltcC5zdHJjbXAKCg==
+RUN
+NAME=BatteryLife thumb/arm
+FILE=../bins/mach0/BatteryLife.arm_32.0
+EXPECT64=ICAweDAwMDE1ZTI0ICAgICAgcHVzaCB7cjQsIHI1LCByNiwgcjcsIGxyfQogIDB4MDAwMTVlMjQgICAgICBwdXNoIHtyNCwgcjUsIHI2LCByNywgbHJ9Cgo=
+CMDS64=CmUgYXNtLmJ5dGVzPTAKZSBhc20ubGluZXMuYmI9MAplIGFzbS5jb21tZW50cz0wCnBkIDF+cHVzaAphYWUKcGQgMX5wdXNoCgo=
+RUN
