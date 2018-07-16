@@ -46,8 +46,6 @@ dbg.linux:
 commands:
 	$(SHELL) run_tests.sh
 
-java: format.java
-
 tools:
 	$(SHELL) run_tests.sh t.tools
 
