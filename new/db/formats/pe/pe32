@@ -1,0 +1,10 @@
+NAME=./pe32
+FILE=../bins/pe/pe.exe
+EXPECT64=MHg0MDEwMDAKCg==
+CMDS64=CnMKCg==
+RUN
+NAME=./pe32
+FILE=../bins/pe/vista-glass.exe
+EXPECT64=Cg==
+CMDS64=cSEKCg==
+RUN

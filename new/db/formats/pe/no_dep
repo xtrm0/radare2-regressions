@@ -1,0 +1,16 @@
+NAME=PE: corkami dep.exe - open
+FILE=../bins/pe/dep.exe
+EXPECT64=Cg==
+CMDS64=cSEK
+RUN
+NAME=PE: corkami dep.exe - dep not enabled
+FILE=../bins/pe/no_dep.exe
+ARGS=-n
+EXPECT64=ZmFsc2UKCgo=
+CMDS64=IXJhYmluMiAtayAncGUubngnIC4uL2JpbnMvcGUvbm9fZGVwLmV4ZQo=
+RUN
+NAME=PE: corkami dep.exe - dep not enabled
+FILE=../bins/pe/no_dep.exe
+EXPECT64=ZmFsc2UKCgo=
+CMDS64=ayBiaW4vY3VyL3BlLm54Cg==
+RUN

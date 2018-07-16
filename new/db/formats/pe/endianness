@@ -1,0 +1,5 @@
+NAME=BDC bad flag
+FILE=../bins/pe/bdc1.ex
+EXPECT64=ZmFsc2UKCg==
+CMDS64=ZSBjZmcuYmlnZW5kaWFuCgo=
+RUN

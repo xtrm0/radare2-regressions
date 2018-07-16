@@ -1,0 +1,5 @@
+NAME=PE: corkami tinynet.exe - open
+FILE=../bins/pe/tinynet.exe
+EXPECT64=Cg==
+CMDS64=cSEK
+RUN

@@ -1,0 +1,5 @@
+NAME=PE: corkami fakeregslib.dll - open
+FILE=../bins/pe/fakeregslib.dll
+EXPECT64=Cg==
+CMDS64=cSEK
+RUN

@@ -1,0 +1,5 @@
+NAME=PE: corkami manifest.exe - open
+FILE=../bins/pe/manifest.exe
+EXPECT64=Cg==
+CMDS64=cSEK
+RUN

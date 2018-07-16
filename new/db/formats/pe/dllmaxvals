@@ -1,0 +1,5 @@
+NAME=PE: corkami dllmaxvals.dll - open
+FILE=../bins/pe/dllmaxvals.dll
+EXPECT64=Cg==
+CMDS64=cSEK
+RUN

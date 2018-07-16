@@ -1,0 +1,5 @@
+NAME=PE: corkami dllnoexp-dynld.exe - open
+FILE=../bins/pe/dllnoexp-dynld.exe
+EXPECT64=Cg==
+CMDS64=cSEK
+RUN

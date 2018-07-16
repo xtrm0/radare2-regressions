@@ -1,0 +1,5 @@
+NAME=dll import function names bug for ws2_32.dll
+FILE=../bins/pe/Lab05-01.dll
+EXPECT64=ICA1MiAweDEwMDE2M2NjICAgIE5PTkUgICAgRlVOQyBXUzJfMzIuZGxsX2dldGhvc3RieW5hbWUKCg==
+CMDS64=aWl+JldTMl8zMiw1MgoK
+RUN

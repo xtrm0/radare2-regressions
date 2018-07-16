@@ -1,0 +1,15 @@
+NAME=PE: corkami dll-dynld.exe - open
+FILE=../bins/pe/dll-dynld.exe
+EXPECT64=Cg==
+CMDS64=cSEK
+RUN
+NAME=PE: corkami dll-dynld.exe - entrypoint
+FILE=../bins/pe/dll-dynld.exe
+EXPECT64=MHg0MDEwMDAKCg==
+CMDS64=CnMKCg==
+RUN
+NAME=PE: corkami dll-dynld.exe - pi 1
+FILE=../bins/pe/dll-dynld.exe
+EXPECT64=cHVzaCAweDQwMTA2NAoK
+CMDS64=ZSBhc20uZmlsdGVyPWZhbHNlCnBpIDEKCg==
+RUN

@@ -1,0 +1,18 @@
+NAME=PE: checksum 1
+FILE=../bins/pe/a.exe
+ARGS=-A
+EXPECT64=Y21wLmNzdW0gMHgwMDAwNWVlMgpoZHIuY3N1bSAweDAwMDA1ZWUyCgo=
+CMDS64=aX5jc3VtCg==
+RUN
+NAME=PE: checksum 2
+FILE=../bins/pe/a2.exe
+ARGS=-A
+EXPECT64=Y21wLmNzdW0gMHgwMDAwNzlhMwpoZHIuY3N1bSAweDAwMDA3OWEzCgo=
+CMDS64=aX5jc3VtCg==
+RUN
+NAME=PE: checksum 3
+FILE=../bins/pe/base.exe
+ARGS=-A
+EXPECT64=Y21wLmNzdW0gMHgwMDAzODgxZgpoZHIuY3N1bSAweDAwMDM4ODFmCgo=
+CMDS64=aX5jc3VtCg==
+RUN

@@ -1,0 +1,5 @@
+NAME=PE: corkami nothing.dll - open
+FILE=../bins/pe/nothing.dll
+EXPECT64=Cg==
+CMDS64=cSEK
+RUN

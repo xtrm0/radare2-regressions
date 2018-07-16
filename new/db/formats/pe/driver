@@ -1,0 +1,5 @@
+NAME=PE: corkami driver.sys - open
+FILE=../bins/pe/driver.sys
+EXPECT64=Cg==
+CMDS64=cSEK
+RUN

@@ -1,0 +1,5 @@
+NAME=PE: corkami exportsdata.exe - open
+FILE=../bins/pe/exportsdata.exe
+EXPECT64=Cg==
+CMDS64=cSEK
+RUN

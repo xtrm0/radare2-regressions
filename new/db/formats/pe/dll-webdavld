@@ -1,0 +1,15 @@
+NAME=PE: corkami dll-webdavld.exe - open
+FILE=../bins/pe/dll-webdavld.exe
+EXPECT64=Cg==
+CMDS64=cSEK
+RUN
+NAME=PE: corkami dll-webdavld.exe - entrypoint
+FILE=../bins/pe/dll-webdavld.exe
+EXPECT64=MHg0MDEwMDAKCg==
+CMDS64=CnMKCg==
+RUN
+NAME=PE: corkami dll-webdavld.exe - pi 1
+FILE=../bins/pe/dll-webdavld.exe
+EXPECT64=Y2FsbCBkd29yZCBbMHg0MDEwYTBdCgo=
+CMDS64=ZSBhc20uZmlsdGVyPWZhbHNlCnBpIDEKCg==
+RUN

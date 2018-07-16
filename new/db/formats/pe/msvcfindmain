@@ -1,0 +1,5 @@
+NAME=PE: msvcfindmain
+FILE=../bins/pe/msvcfindmain.exe
+EXPECT64=MQoK
+CMDS64=CmFhCnBkIDEgQCBtYWlufj8weDAwNDAxMDAwCgo=
+RUN

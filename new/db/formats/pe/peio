@@ -1,0 +1,15 @@
+NAME=pe entrypoint
+FILE=../bins/pe/base.exe
+EXPECT64=MHg0MDEyODAKNTU4OWU1ODNlYzA4YzcwNAoK
+CMDS64=cyBlbnRyeTAKP3YgZW50cnkwCnA4IDgKCg==
+RUN
+NAME=pe section
+FILE=../bins/pe/base.exe
+EXPECT64=MHg0MDEwMDAKCg==
+CMDS64=P3Ygc2VjdGlvbi4udGV4dAoK
+RUN
+NAME=pe symbol addr
+FILE=../bins/pe/base.exe
+EXPECT64=MHg0MDE4MzgKNTU4OWU1ODMKCg==
+CMDS64=P3Ygc3ltLl9tYWxsb2MKcDggNAoK
+RUN

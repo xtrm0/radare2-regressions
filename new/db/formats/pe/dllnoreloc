@@ -1,0 +1,5 @@
+NAME=PE: corkami dllnoreloc.dll - open
+FILE=../bins/pe/dllnoreloc.dll
+EXPECT64=Cg==
+CMDS64=cSEK
+RUN

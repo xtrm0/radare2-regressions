@@ -1,0 +1,15 @@
+NAME=PE: corkami dllbound-redirld.exe - open
+FILE=../bins/pe/dllbound-redirld.exe
+EXPECT64=Cg==
+CMDS64=cSEK
+RUN
+NAME=PE: corkami dllbound-redirld.exe - entrypoint
+FILE=../bins/pe/dllbound-redirld.exe
+EXPECT64=MHg0MDEwMDAKCg==
+CMDS64=CnMKCg==
+RUN
+NAME=PE: corkami dllbound-redirld.exe - pi 1
+FILE=../bins/pe/dllbound-redirld.exe
+EXPECT64=Y2FsbCBkd29yZCBbMHg0MDEwNjBdCgo=
+CMDS64=ZSBhc20uZmlsdGVyPWZhbHNlCnBpIDEKCg==
+RUN

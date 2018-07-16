@@ -1,0 +1,15 @@
+NAME=PE: corkami d_nonnull-ld.exe - open
+FILE=../bins/pe/d_nonnull-ld.exe
+EXPECT64=Cg==
+CMDS64=cSEK
+RUN
+NAME=PE: corkami d_nonnull-ld - entrypoint
+FILE=../bins/pe/d_nonnull-ld.exe
+EXPECT64=MHg0MDEwMDAKCg==
+CMDS64=CnMKCg==
+RUN
+NAME=PE: corkami d_nonnull-ld - pi 1
+FILE=../bins/pe/d_nonnull-ld.exe
+EXPECT64=cHVzaCAyCgo=
+CMDS64=ZSBhc20uZmlsdGVyPWZhbHNlCnBpIDEKCg==
+RUN

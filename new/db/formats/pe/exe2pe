@@ -1,0 +1,5 @@
+NAME=PE: corkami exe2pe.exe - open
+FILE=../bins/pe/exe2pe.exe
+EXPECT64=Cg==
+CMDS64=cSEK
+RUN

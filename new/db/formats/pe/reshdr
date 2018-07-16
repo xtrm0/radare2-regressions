@@ -1,0 +1,5 @@
+NAME=PE: corkami reshdr.exe - open
+FILE=../bins/pe/reshdr.exe
+EXPECT64=Cg==
+CMDS64=cSEK
+RUN

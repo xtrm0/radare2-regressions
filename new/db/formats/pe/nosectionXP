@@ -1,0 +1,15 @@
+NAME=PE: corkami nosectionXP.exe - open
+FILE=../bins/pe/nosectionXP.exe
+EXPECT64=Cg==
+CMDS64=cSEK
+RUN
+NAME=PE: nosectionXP - entrypoint
+FILE=../bins/pe/nosectionXP.exe
+EXPECT64=WzAwOjAwXSAqIHBhPTB4MDAwMDAxMzggcnd4IHZhPTB4MDA0MDAxMzggc3o9MHgwMGZmIHZzej0weDAwZmYgYmxvYgoK
+CMDS64=Uwo=
+RUN
+NAME=PE: nosectionXP - entrypoint
+FILE=../bins/pe/nosectionXP.exe
+EXPECT64=cHVzaCAweDQwMDE1MApjYWxsIGR3b3JkIFtzeW0uaW1wLm1zdmNydC5kbGxfcHJpbnRmXQphZGQgZXNwLCA0Cm5vcApwdXNoIDAKCg==
+CMDS64=cGkgNQo=
+RUN

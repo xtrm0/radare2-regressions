@@ -1,0 +1,10 @@
+NAME=PE: corkami dllnullep.dll - open
+FILE=../bins/pe/dllnullep.dll
+EXPECT64=Cg==
+CMDS64=cSEK
+RUN
+NAME=PE: corkami dllnullep.dll - entrypoint
+FILE=../bins/pe/dllnullep.dll
+EXPECT64=MHgxMDAwMDAwCgo=
+CMDS64=CnMKCg==
+RUN

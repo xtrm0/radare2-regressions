@@ -1,0 +1,5 @@
+NAME=PE: corkami dllfakess.dll - open
+FILE=../bins/pe/dllfakess.dll
+EXPECT64=Cg==
+CMDS64=cSEK
+RUN

@@ -1,0 +1,15 @@
+NAME=PE: corkami virtrelocXP.exe - open
+FILE=../bins/pe/virtrelocXP.exe
+EXPECT64=Cg==
+CMDS64=cSEK
+RUN
+NAME=PE: corkami virtrelocXP.exe - entrypoint
+FILE=../bins/pe/virtrelocXP.exe
+EXPECT64=MHgxMDEzOAoK
+CMDS64=CnMKCg==
+RUN
+NAME=PE: corkami virtrelocXP.exe - pi 1
+FILE=../bins/pe/virtrelocXP.exe
+EXPECT64=cHVzaCAweDE1MAoK
+CMDS64=CnBpIDEKCg==
+RUN

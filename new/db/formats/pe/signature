@@ -1,0 +1,5 @@
+NAME=PE: corkami signature.exe - open
+FILE=../bins/pe/signature.exe
+EXPECT64=Cg==
+CMDS64=cSEK
+RUN

@@ -1,0 +1,5 @@
+NAME=PE: corkami tinydrivXP.sys - open
+FILE=../bins/pe/tinydrivXP.sys
+EXPECT64=Cg==
+CMDS64=cSEK
+RUN

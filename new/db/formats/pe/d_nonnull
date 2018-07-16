@@ -1,0 +1,10 @@
+NAME=PE: corkami d_nonnull.dll - open
+FILE=../bins/pe/d_nonnull.dll
+EXPECT64=Cg==
+CMDS64=cSEK
+RUN
+NAME=PE: corkami d_nonnull.dll - entrypoint
+FILE=../bins/pe/d_nonnull.dll
+EXPECT64=MHgyMTIxCgo=
+CMDS64=CnMKCg==
+RUN

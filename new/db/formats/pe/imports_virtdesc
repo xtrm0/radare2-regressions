@@ -1,0 +1,5 @@
+NAME=PE: corkami imports_virtdesc.exe - open
+FILE=../bins/pe/imports_virtdesc.exe
+EXPECT64=Cg==
+CMDS64=cSEK
+RUN

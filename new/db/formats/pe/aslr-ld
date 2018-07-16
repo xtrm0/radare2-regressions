@@ -1,0 +1,15 @@
+NAME=PE: corkami aslr-ld.exe - open
+FILE=../bins/pe/aslr-ld.exe
+EXPECT64=Cg==
+CMDS64=cSEK
+RUN
+NAME=PE: corkami aslr-ld.exe - entrypoint
+FILE=../bins/pe/aslr-ld.exe
+EXPECT64=MHg0MDEwMDAKCg==
+CMDS64=CnMKCg==
+RUN
+NAME=PE: corkami aslr-ld.exe - pi 1
+FILE=../bins/pe/aslr-ld.exe
+EXPECT64=aW5jIGR3b3JkIFsweDQwMTA4OF0KCg==
+CMDS64=CnBpIDEKCg==
+RUN

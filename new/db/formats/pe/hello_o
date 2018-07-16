@@ -1,0 +1,5 @@
+NAME=COFF: hello object file
+FILE=../bins/pe/hello.obj
+EXPECT64=Cg==
+CMDS64=cQo=
+RUN

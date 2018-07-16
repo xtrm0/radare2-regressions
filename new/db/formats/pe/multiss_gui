@@ -1,0 +1,5 @@
+NAME=PE: corkami multiss_gui.exe - open
+FILE=../bins/pe/multiss_gui.exe
+EXPECT64=Cg==
+CMDS64=cSEK
+RUN

@@ -1,0 +1,15 @@
+NAME=PE: corkami dll.dll - open
+FILE=../bins/pe/dll.dll
+EXPECT64=Cg==
+CMDS64=cSEK
+RUN
+NAME=PE: corkami dll.dll - entrypoint
+FILE=../bins/pe/dll.dll
+EXPECT64=MHgxMDAxMDAwCgo=
+CMDS64=CnMKCg==
+RUN
+NAME=PE: corkami dll.dll - pi 1
+FILE=../bins/pe/dll.dll
+EXPECT64=Y21wIGR3b3JkIFtlc3AgKyA4XSwgMQoK
+CMDS64=ZSBhc20uZmlsdGVyPWZhbHNlCnBpIDEKCg==
+RUN

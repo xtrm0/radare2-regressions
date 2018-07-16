@@ -1,0 +1,61 @@
+NAME=PE: corkami cm01.exe - open
+FILE=../bins/pe/cm01.exe
+EXPECT64=Cg==
+CMDS64=cSEK
+RUN
+NAME=PE: corkami cm01.exe - sections
+FILE=../bins/pe/cm01.exe
+ARGS=-n
+EXPECT64=W1NlY3Rpb25zXQowMCAweDAwMDAwNjAwICAxNTM2IDB4MDA0MDEwMDAgIDQwOTYgLXIteCBDT0RFCjAxIDB4MDAwMDBjMDAgICA1MTIgMHgwMDQwMjAwMCAgNDA5NiAtcnctIERBVEEKMDIgMHgwMDAwMGUwMCAgMjA0OCAweDAwNDAzMDAwICA0MDk2IC1ydy0gLmlkYXRhCjAzIDB4MDAwMDE2MDAgICA1MTIgMHgwMDQwNDAwMCAgNDA5NiAtci0tIC5lZGF0YQowNCAweDAwMDAxODAwICAgNTEyIDB4MDA0MDUwMDAgIDQwOTYgc3ItLSAucmVsb2MKMDUgMHgwMDAwMWEwMCAgNTEyMCAweDAwNDA2MDAwICA4MTkyIHNyLS0gLnJzcmMKCg==
+CMDS64=IXJhYmluMiAtUyAuLi9iaW5zL3BlL2NtMDEuZXhlCg==
+RUN
+NAME=PE: corkami cm01.exe - section seek 1
+FILE=../bins/pe/cm01.exe
+EXPECT64=Q09ERQoK
+CMDS64=cyAweDAwNDAxMDAwClMuflsyXQo=
+RUN
+NAME=PE: corkami cm01.exe - section seek 2
+FILE=../bins/pe/cm01.exe
+EXPECT64=REFUQQoK
+CMDS64=cyAweDAwNDAyMDAwClMuflsyXQo=
+RUN
+NAME=PE: corkami cm01.exe - section seek 3
+FILE=../bins/pe/cm01.exe
+EXPECT64=LmlkYXRhCgo=
+CMDS64=cyAweDAwNDAzMDAwClMuflsyXQo=
+RUN
+NAME=PE: corkami cm01.exe - section seek 4
+FILE=../bins/pe/cm01.exe
+EXPECT64=LmVkYXRhCgo=
+CMDS64=cyAweDAwNDA0MDAwClMuflsyXQo=
+RUN
+NAME=PE: corkami cm01.exe - section seek 5
+FILE=../bins/pe/cm01.exe
+EXPECT64=LnJlbG9jCgo=
+CMDS64=cyAweDAwNDA1MDAwClMuflsyXQo=
+RUN
+NAME=PE: corkami cm01.exe - section seek 6
+FILE=../bins/pe/cm01.exe
+EXPECT64=LnJzcmMKCg==
+CMDS64=cyAweDAwNDA2MDAwClMuflsyXQo=
+RUN
+NAME=PE: corkami cm01.exe - section refs 1
+FILE=../bins/pe/cm01.exe
+EXPECT64=cHVzaCBzdHIuQ3JhY2tNZV92MS4wCnB1c2ggc3RyLk5vX25lZWRfdG9fZGlzYXNtX3RoZV9jb2RlCgo=
+CMDS64=ZSBhbmFsLnN0cmluZ3MgPSB0cnVlCmFhYQpwaSAyIEAgMHgwMDQwMTBiNwo=
+RUN
+NAME=PE: corkami cm01.exe - section refs 2
+FILE=../bins/pe/cm01.exe
+EXPECT64=cHVzaCBzdHIuTm9fbHVjawpwdXNoIHN0ci5Ob19sdWNrX3RoZXJlX19tYXRlCgo=
+CMDS64=ZSBhbmFsLnN0cmluZ3MgPSB0cnVlCmFhYQpwaSAyIEAgMHgwMDQwMTM2Ygo=
+RUN
+NAME=PE: corkami cm01.exe - section refs 3
+FILE=../bins/pe/cm01.exe
+EXPECT64=cHVzaCBzdHIuTm9fbHVjawpwdXNoIHN0ci5Ob19sdWNrX3RoZXJlX19tYXRlCgo=
+CMDS64=ZSBhbmFsLnN0cmluZ3MgPSB0cnVlCmFhYQpwaSAyIEAgMHgwMDQwMTNhZgo=
+RUN
+NAME=PE: corkami cm01.exe - section refs 4
+FILE=../bins/pe/cm01.exe
+EXPECT64=cHVzaCBzdHIuR29vZF93b3JrCnB1c2ggc3RyLkdyZWF0X3dvcmtfX21hdGVfX05vd190cnlfdGhlX25leHRfQ3JhY2tNZQoK
+CMDS64=ZSBhbmFsLnN0cmluZ3MgPSB0cnVlCmFhYQpwaSAyIEAgMHgwMDQwMTM0Zgo=
+RUN
