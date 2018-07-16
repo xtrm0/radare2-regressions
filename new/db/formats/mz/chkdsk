@@ -1,0 +1,22 @@
+NAME=MZ: chkdsk.exe - open
+FILE=../bins/mz/chkdsk.exe
+ARGS=-A
+EXPECT64=Cg==
+CMDS64=cSEK
+RUN
+NAME=MZ: chkdsk.exe - entrypoint
+FILE=../bins/mz/chkdsk.exe
+EXPECT64=MHgyMAoK
+CMDS64=CnMKCg==
+RUN
+NAME=MZ: chkdsk.exe - pi 1
+FILE=../bins/mz/chkdsk.exe
+EXPECT64=bW92IGN4LCAweDUxNWUKCg==
+CMDS64=CnBpIDEKCg==
+RUN
+NAME=MZ: chkdsk.exe segments
+BROKEN=1
+FILE=../bins/mz/chkdsk.exe
+EXPECT64=ZnMgc2VjdGlvbnMKUyAweDAwMDAwMDIwIDB4MDAwMDAwMjAgMHgwMDAwYTMxMiAweDAwMDBhMzEyIHNlZ18wMDAgMjMKZiBzZWN0aW9uLnNlZ18wMDAgNDE3NDYgMHgwMDAwMDAyMApmIHNlY3Rpb25fZW5kLnNlZ18wMDAgMSAweDAwMDBhMzMyCkNDIHNlY3Rpb24gMCB2YT0weDAwMDAwMDIwIHBhPTB4MDAwMDAwMjAgc3o9NDE3NDYgdnN6PTQxNzQ2IHJ3eD0tcnd4IHNlZ18wMDAgQCAweDAwMDAwMDIwCgo=
+CMDS64=aVMqCg==
+RUN
