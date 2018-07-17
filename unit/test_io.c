@@ -36,18 +36,18 @@ bool test_r_io_pcache (void) {
 	r_io_map_calculate_skyline (io);
 	io->p_cache = 2;
 	io->va = true;
-	r_io_fd_write_at (io, fd, 0, "8=D", 3);
+	r_io_fd_write_at (io, fd, 0, (const ut8*)"8=D", 3);
 	r_io_read_at (io, 0x0, buf, 8);
-	mu_assert_streq (buf, "", "pcache read happened, but it shouldn't");
+	mu_assert_streq ((const char *)buf, "", "pcache read happened, but it shouldn't");
 	io->p_cache = 1;
 	r_io_read_at (io, 0x0, buf, 8);
-	mu_assert_streq (buf, "8=====D", "expected an ascii-pn from pcache");
-	r_io_fd_write_at (io, fd, 0, "XXX", 3);
+	mu_assert_streq ((const char *)buf, "8=====D", "expected an ascii-pn from pcache");
+	r_io_fd_write_at (io, fd, 0, (const ut8*)"XXX", 3);
 	r_io_read_at (io, 0x0, buf, 8);
-	mu_assert_streq (buf, "8=====D", "expected an ascii-pn from pcache");
+	mu_assert_streq ((const char *)buf, "8=====D", "expected an ascii-pn from pcache");
 	io->p_cache = 0;
 	r_io_read_at (io, 0x0, buf, 8);
-	mu_assert_streq (buf, "XXXXXXX", "expected censorship of the ascii-pn");
+	mu_assert_streq ((const char *)buf, "XXXXXXX", "expected censorship of the ascii-pn");
 	r_io_free (io);
 	mu_end;
 }

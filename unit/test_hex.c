@@ -73,7 +73,7 @@ bool test_r_hex_from_py() {
 }
 
 bool test_r_hex_no_code() {
-	char *s;
+	const char *s;
 	s = "\"ABCD\"";
 	mu_assert_streq (r_hex_no_code (s), "41424344", s);
 	s = "\"AB\" \"CD\"";
