@@ -107,6 +107,7 @@ function main (argv) {
     }
 
     // Load tests
+    let watdo = 0;
     const walker = walk('db', {followLinks: false});
     const filter = argv._[0] || '';
     walker.on('file', (root, stat, next) => {
@@ -121,13 +122,18 @@ function main (argv) {
       }
       nr.load(testFile, (err, data) => {
         if (err) {
+          console.log('[XX] WAT DO', testFile);
           console.error(err.message);
-          console.log('WAT DO');
+          watdo++;
         }
         next();
       });
     });
     walker.on('end', () => {
+      if (watdo > 0) {
+        // XXX this is probably wrong
+        process.exit(1);
+      }
       if (!filter || filter === 'fuzz') {
         // Load fuzzed binaries
         nr.loadFuzz('../bins/fuzzed', (err, data) => {
