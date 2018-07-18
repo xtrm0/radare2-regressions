@@ -707,3 +707,11 @@ a "mov dword ptr [esp+0x24],0x66670f00" 67c7442424000f6766
 a "mov word ptr [esi],0x5084" 6766c7068450
 a "mov dword ptr [ebp-0x44],0x31660305" 67c745bc05036631
 a "mov dword ptr [ebp-0x4c],0x47534943" 67c745b443495347
+
+
+a "mov rax, qword[r12]" 498b0424
+a "mov rax, qword[r13]" 498b4500
+a "mov rsp, qword[r12 - 0x12]"  498b6424ee
+a "mov qword[r12], rsp" 49892424
+a "mov qword[r8 + 0x20], rax" 49894020
+a "mov r12, qword[r12]" 4d8b2424
