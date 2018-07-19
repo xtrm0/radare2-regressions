@@ -65,7 +65,7 @@ format.pe:
 	$(SHELL) run_tests.sh t.formats/pe
 
 
-tools: radiff2 ragg2 rahash2 rasm2 rax2 r2
+tools: radiff2 ragg2 rahash2 rasm2 rax2
 radiff2:
 	$(SHELL) run_tests.sh t.tools/radiff2
 ragg2:
@@ -76,8 +76,6 @@ rasm2:
 	$(SHELL) run_tests.sh t.tools/rasm2
 rax2:
 	$(SHELL) run_tests.sh t.tools/rax2
-r2:
-	$(SHELL) run_tests.sh t.tools/r2
 
 keystone:
 	$(SHELL) run_tests.sh t.extras/keystone
