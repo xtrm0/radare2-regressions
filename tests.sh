@@ -87,8 +87,8 @@ dump_test() {
     echo "ARGS=$ARGS"
   fi
   echo "CMDS=<<EXPECT"
-  printf "$CMDS"
-  END=$(printf "$CMDS" | tail -c 1)
+  printf "%s" "$CMDS"
+  END=$(printf "%s" "$CMDS" | tail -c 1)
   if [ "$END" != "" ]; then
     echo
   fi
@@ -97,18 +97,18 @@ dump_test() {
   else
     echo "EXPECT=<<RUN"
   fi
-  printf "$EXPECT"
-  END=$(printf "$EXPECT" | tail -c 1)
+  printf "%s" "$EXPECT"
+  END=$(printf "%s" "$EXPECT" | tail -c 1)
   if [ "$END" != "" ]; then
     echo
   fi
   if [ -n "$EXPECT_ERR" ]; then
-    COUNT_NL=$(printf "$EXPECT_ERR" | wc -l)
+    COUNT_NL=$(printf "%s" "$EXPECT_ERR" | wc -l)
     if [ ${COUNT_NL} -gt 1 ]; then
       echo "ERROR: Multiline EXPECT_ERR not supported"
       exit 1
     fi
-    printf "EXPECT_ERR=$EXPECT_ERR"
+    printf "%s" "EXPECT_ERR=$EXPECT_ERR"
     if [ ${COUNT_NL} -eq 0 ]; then
       echo
     fi
