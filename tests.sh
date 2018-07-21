@@ -86,8 +86,13 @@ dump_test() {
   if [ -n "$ARGS" ]; then
     echo "ARGS=$ARGS"
   fi
-  echo "CMDS=<<EXPECT"
-  printf "%s" "$CMDS"
+  COUNT_NL=$(printf "%s" "$CMDS" | wc -l)
+  if [ ${COUNT_NL} -gt 1 ]; then
+    echo "CMDS=<<EXPECT"
+    printf "%s" "$CMDS"
+  else
+    printf "%s" "CMDS=$CMDS"
+  fi
   END=$(printf "%s" "$CMDS" | tail -c 1)
   if [ "$END" != "" ]; then
     echo
