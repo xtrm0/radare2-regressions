@@ -586,7 +586,8 @@ NAME=regression for #9370
 FILE=../bins/elf/analysis/hello-arm32
 ARGS=-m 0x10000
 CMDS='izz~Hello'
-EXPECT='006 0x00000200 0x00010200  11  12 (.rodata) ascii Hello World'
+EXPECT='006 0x00000200 0x00010200  11  12 (.rodata) ascii Hello World
+'
 RUN
 NAME=iee preinit
 FILE=../bins/elf/before-after-main

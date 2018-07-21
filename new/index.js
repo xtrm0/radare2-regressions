@@ -449,7 +449,7 @@ class NewRegressions {
                 }
                 test.expect += lines[i].substring(0, endDelim);
               } else {
-                test.expect = v.substring(startDelim + 1, endDelim) + "\n";
+                test.expect = v.substring(startDelim + 1, endDelim);  // No newline added
               }
             } else {
               test.expect = v + "\n";
