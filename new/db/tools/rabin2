@@ -1,7 +1,6 @@
 NAME=baddr ==
 FILE=../bins/elf/analysis/hello-linux-x86_64
-CMDS=<<EXPECT
-!rabin2 -qe ${R2_FILE};!rabin2 -B 0x400000 -qe ${R2_FILE}
+CMDS=!rabin2 -qe ${R2_FILE};!rabin2 -B 0x400000 -qe ${R2_FILE}
 EXPECT=<<RUN
 0x00400410
 0x00400410
@@ -9,8 +8,7 @@ RUN
 
 NAME=baddr > 0
 FILE=../bins/elf/analysis/hello-linux-x86_64
-CMDS=<<EXPECT
-!rabin2 -qe ${R2_FILE};!rabin2 -B 0x800000 -qe ${R2_FILE}
+CMDS=!rabin2 -qe ${R2_FILE};!rabin2 -B 0x800000 -qe ${R2_FILE}
 EXPECT=<<RUN
 0x00400410
 0x00800410
@@ -18,8 +16,7 @@ RUN
 
 NAME=baddr 0
 FILE=../bins/elf/analysis/hello-linux-x86_64
-CMDS=<<EXPECT
-!rabin2 -qe ${R2_FILE};!rabin2 -B 0 -qe ${R2_FILE}
+CMDS=!rabin2 -qe ${R2_FILE};!rabin2 -B 0 -qe ${R2_FILE}
 EXPECT=<<RUN
 0x00400410
 0x00000410
@@ -27,8 +24,7 @@ RUN
 
 NAME=laddr 0
 FILE=../bins/elf/analysis/hello-linux-x86_64
-CMDS=<<EXPECT
-!rabin2 -G 0 -e ${R2_FILE}
+CMDS=!rabin2 -G 0 -e ${R2_FILE}
 EXPECT=<<RUN
 [Entrypoints]
 vaddr=0x00400410 paddr=0x00000410 baddr=0x00400000 laddr=0x00000000 haddr=0x00000018 type=program
@@ -38,8 +34,7 @@ RUN
 
 NAME=laddr 0 && baddr 0
 FILE=../bins/elf/analysis/hello-linux-x86_64
-CMDS=<<EXPECT
-!rabin2 -G 0 -B 0 -e ${R2_FILE}
+CMDS=!rabin2 -G 0 -B 0 -e ${R2_FILE}
 EXPECT=<<RUN
 [Entrypoints]
 vaddr=0x00000410 paddr=0x00000410 baddr=0x00000000 laddr=0x00000000 haddr=0x00000018 type=program
@@ -49,16 +44,14 @@ RUN
 
 NAME=rabin -k file
 FILE=../bins/elf/analysis/hello-linux-x86_64
-CMDS=<<EXPECT
-!rabin2 -k ${R2_FILE}
+CMDS=!rabin2 -k ${R2_FILE}
 EXPECT=<<EXPECT_ERR
 EXPECT_ERR=Missing file.
 RUN
 
 NAME=rabin2 -K md5 -S file
 FILE=../bins/pe/a.exe
-CMDS=<<EXPECT
-!rabin2 -K md5 -S ${R2_FILE}
+CMDS=!rabin2 -K md5 -S ${R2_FILE}
 EXPECT=<<RUN
 [Sections]
 00 0x00000400  2560 0x00401000  4096 -r-x md5=3d6a5b8dc5e41b09659638ad5735e5b5 .text
@@ -70,16 +63,14 @@ RUN
 
 NAME=rabin2 -s file pe
 FILE=../bins/pe/a.exe
-CMDS=<<EXPECT
-!rabin2 -s ${R2_FILE}|wc -l|awk "{print \$1}"
+CMDS=!rabin2 -s ${R2_FILE}|wc -l|awk "{print \$1}"
 EXPECT=<<RUN
 21
 RUN
 
 NAME=rabin2 -s file elf
 FILE=../bins/elf/analysis/x86-helloworld-gcc
-CMDS=<<EXPECT
-!rabin2 -s ${R2_FILE}|wc -l|awk "{print \$1}"
+CMDS=!rabin2 -s ${R2_FILE}|wc -l|awk "{print \$1}"
 EXPECT=<<RUN
 66
 RUN
@@ -108,40 +99,35 @@ RUN
 
 NAME=rabin2 -z pe
 FILE=../bins/pe/a.exe
-CMDS=<<EXPECT
-!rabin2 -z ${R2_FILE}|wc -l|awk "{print \$1}"
+CMDS=!rabin2 -z ${R2_FILE}|wc -l|awk "{print \$1}"
 EXPECT=<<RUN
 4
 RUN
 
 NAME=rabin2 -z elf
 FILE=../bins/elf/analysis/x86-helloworld-gcc
-CMDS=<<EXPECT
-!rabin2 -z ${R2_FILE}|wc -l|awk "{print \$1}"
+CMDS=!rabin2 -z ${R2_FILE}|wc -l|awk "{print \$1}"
 EXPECT=<<RUN
 1
 RUN
 
 NAME=rabin2 -G 0x1000 -rs fatmach0
 FILE=../bins/mach0/fatmach0-3true
-CMDS=<<EXPECT
-!rabin2 -G 0x1000 -rs ${R2_FILE}|grep "f " | wc -l|awk "{print \$1}"
+CMDS=!rabin2 -G 0x1000 -rs ${R2_FILE}|grep "f " | wc -l|awk "{print \$1}"
 EXPECT=<<RUN
 3
 RUN
 
 NAME=rabin2 -G 0x1300 -rs fatmach0
 FILE=../bins/mach0/fatmach0-3true
-CMDS=<<EXPECT
-!rabin2 -G 0x1300 -rs ${R2_FILE}|wc -l|awk "{print \$1}"
+CMDS=!rabin2 -G 0x1300 -rs ${R2_FILE}|wc -l|awk "{print \$1}"
 EXPECT=<<RUN
 1
 RUN
 
 NAME=rabin2 -G 0x1000 -e fatmach0
 FILE=../bins/mach0/fatmach0-3true
-CMDS=<<EXPECT
-!rabin2 -G 0x1000 -e ${R2_FILE}
+CMDS=!rabin2 -G 0x1000 -e ${R2_FILE}
 EXPECT=<<RUN
 [Entrypoints]
 vaddr=0x100000ef8 paddr=0x00001ef8 baddr=0x100000000 laddr=0x00001000 haddr=0x00000570 type=program
@@ -152,8 +138,7 @@ RUN
 NAME=rabin2 -e fatmach0
 BROKEN=1
 FILE=../bins/mach0/fatmach0-3true
-CMDS=<<EXPECT
-!rabin2 -e ${R2_FILE}
+CMDS=!rabin2 -e ${R2_FILE}
 EXPECT=<<RUN
 [Entrypoints]
 vaddr=0x100000ef8 paddr=0x00001ef8 baddr=0x100000000 laddr=0x00001000 haddr=0x00000570 type=program
@@ -163,8 +148,7 @@ RUN
 
 NAME=rabin2 -G 0x5000 -e fatmach0
 FILE=../bins/mach0/fatmach0-3true
-CMDS=<<EXPECT
-!rabin2 -G 0x5000 -e ${R2_FILE}
+CMDS=!rabin2 -G 0x5000 -e ${R2_FILE}
 EXPECT=<<RUN
 [Entrypoints]
 vaddr=0x00001f44 paddr=0x00005f44 baddr=0x00001000 laddr=0x00005000 haddr=0x00000420 type=program
@@ -175,8 +159,7 @@ RUN
 NAME=rabin2 -a x86 -b 32 -e fatmach0
 BROKEN=1
 FILE=../bins/mach0/fatmach0-3true
-CMDS=<<EXPECT
-!rabin2 -a x86 -b 32 -e ${R2_FILE}
+CMDS=!rabin2 -a x86 -b 32 -e ${R2_FILE}
 EXPECT=<<RUN
 [Entrypoints]
 vaddr=0x00001f44 paddr=0x00005f44 baddr=0x00001000 laddr=0x00005000 haddr=0x00000420 type=program
@@ -186,8 +169,7 @@ RUN
 
 NAME=rabin2 -B 0x2000000 -G 0x1000 -e fatmach0
 FILE=../bins/mach0/fatmach0-3true
-CMDS=<<EXPECT
-!rabin2 -B 0x2000000 -G 0x1000 -e ${R2_FILE}
+CMDS=!rabin2 -B 0x2000000 -G 0x1000 -e ${R2_FILE}
 EXPECT=<<RUN
 [Entrypoints]
 vaddr=0x02000ef8 paddr=0x00001ef8 baddr=0x02000000 laddr=0x00001000 haddr=0x00000570 type=program
@@ -198,16 +180,14 @@ RUN
 NAME=TODO: test on pie fatmach0
 BROKEN=1
 FILE=../bins/mach0/fatmach0-3true
-CMDS=<<EXPECT
-!rabin2 -B 0x2000000 -G 0x1000 -e ${R2_FILE}
+CMDS=!rabin2 -B 0x2000000 -G 0x1000 -e ${R2_FILE}
 EXPECT=<<RUN
 ???
 RUN
 
 NAME=rabin2 -B 0x2000000 -e arm64
 FILE=../bins/mach0/hello-ios-arm64
-CMDS=<<EXPECT
-!rabin2 -B 0x2000000 -e ${R2_FILE}
+CMDS=!rabin2 -B 0x2000000 -e ${R2_FILE}
 EXPECT=<<RUN
 [Entrypoints]
 vaddr=0x02007f34 paddr=0x00007f34 baddr=0x02000000 laddr=0x00000000 haddr=0x00000468 type=program
@@ -217,8 +197,7 @@ RUN
 
 NAME=rabin2 -B 0x2000000 -e arm64
 FILE=../bins/mach0/hello-ios-arm64
-CMDS=<<EXPECT
-!rabin2 -B 0x2000000 -e ${R2_FILE}
+CMDS=!rabin2 -B 0x2000000 -e ${R2_FILE}
 EXPECT=<<RUN
 [Entrypoints]
 vaddr=0x02007f34 paddr=0x00007f34 baddr=0x02000000 laddr=0x00000000 haddr=0x00000468 type=program
@@ -228,8 +207,7 @@ RUN
 
 NAME=rabin2 -a x86 -b 32 -i fatmach0
 FILE=../bins/mach0/fatmach0-3true
-CMDS=<<EXPECT
-!rabin2 -a x86 -b 32 -i ${R2_FILE}
+CMDS=!rabin2 -a x86 -b 32 -i ${R2_FILE}
 EXPECT=<<RUN
 [Imports]
    0 0x00001f94    NONE    FUNC exit
@@ -238,8 +216,7 @@ RUN
 
 NAME=rabin2 -G 0x5000 -i fatmach0
 FILE=../bins/mach0/fatmach0-3true
-CMDS=<<EXPECT
-!rabin2 -G 0x5000 -i ${R2_FILE}
+CMDS=!rabin2 -G 0x5000 -i ${R2_FILE}
 EXPECT=<<RUN
 [Imports]
    0 0x00001f94    NONE    FUNC exit
@@ -248,8 +225,7 @@ RUN
 
 NAME=rabin2 -qqz
 FILE=../bins/elf/analysis/hello-linux-x86_64
-CMDS=<<EXPECT
-!rabin2 -qqz ${R2_FILE}
+CMDS=!rabin2 -qqz ${R2_FILE}
 EXPECT=<<RUN
 Hello World
 RUN
