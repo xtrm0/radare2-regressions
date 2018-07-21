@@ -505,7 +505,7 @@ class NewRegressions {
         tests = tests.replace(/\/dev\/null/g, 'nul').replace(/\r\n/g, '\n').split('\n');
         for (let i = 0; i < tests.length; i++) {
           if (tests[i].startsWith('!') || tests[i].startsWith('CMDS=!')) {
-            tests[i] = tests[i].replace(/\${(\S+)}/g, '%$1%')
+            tests[i] = tests[i].replace(/\${(\S+?)}/g, '%$1%')
               .replace(/awk "{print \\\$1}"/g, "sed 's/^[ \\t]*//;s/[ \\t]*$//'");
           }
         }
