@@ -65,9 +65,7 @@ format.pe:
 	$(SHELL) run_tests.sh t.formats/pe
 
 
-tools: rahash2 rasm2
-rahash2:
-	$(SHELL) run_tests.sh t.tools/rahash2
+tools: rasm2
 rasm2:
 	$(SHELL) run_tests.sh t.tools/rasm2
 
