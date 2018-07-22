@@ -97,15 +97,37 @@ dump_test() {
   if [ "$END" != "" ]; then
     echo
   fi
-  if [ -n "$EXPECT_ERR" ]; then
-    echo "EXPECT=<<EXPECT_ERR"
-  else
-    echo "EXPECT=<<RUN"
-  fi
-  printf "%s" "$EXPECT"
   END=$(printf "%s" "$EXPECT" | tail -c 1)
-  if [ "$END" != "" ]; then
-    echo
+  if [ "$END" != "" ] && [ -n "$EXPECT" ]; then
+    NUM_DELIMS=$(printf "%s" "$EXPECT" | tr -cd \' | wc -c)
+    if [ ${NUM_DELIMS} -eq 0 ]; then
+      DELIM="'"
+    else
+      NUM_DELIMS=$(printf "%s" "$EXPECT" | tr -cd \" | wc -c)
+      if [ ${NUM_DELIMS} -eq 0 ]; then
+        DELIM='"'
+      else
+        NUM_DELIMS=$(printf "%s" "$EXPECT" | tr -cd % | wc -c)
+        if [ ${NUM_DELIMS} -eq 0 ]; then
+          DELIM="%"
+        else
+          echo "ERROR: No suitable delimiter found from '\"%"
+          exit 1
+        fi
+      fi
+    fi
+    echo "EXPECT=$DELIM$EXPECT$DELIM"
+  else
+    if [ -n "$EXPECT_ERR" ]; then
+      echo "EXPECT=<<EXPECT_ERR"
+    else
+      echo "EXPECT=<<RUN"
+    fi
+    printf "%s" "$EXPECT"
+    END=$(printf "%s" "$EXPECT" | tail -c 1)
+    if [ "$END" != "" ]; then
+      echo
+    fi
   fi
   if [ -n "$EXPECT_ERR" ]; then
     COUNT_NL=$(printf "%s" "$EXPECT_ERR" | wc -l)
