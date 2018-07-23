@@ -22,6 +22,17 @@
 #define MU_TEST_UNBROKEN 0
 #define MU_TEST_BROKEN 1
 
+void sprint_mem(char *out, ut8 *buf, size_t len) {
+	size_t i;
+	*out = '\0';
+	for (i = 0; i < len; i++) {
+		if (i > 0) {
+			sprintf(out + strlen(out), " ");
+		}
+		sprintf (out + strlen(out), "%02x", buf[i]);
+	}
+}
+
 #define mu_assert(message, test) do { \
 		if (!(test)) { \
 						mu_fail(message); \
@@ -57,20 +68,29 @@
 
 #define mu_assert_eq(actual, expected, message) do { \
 		char _meqstr[2048]; \
-		sprintf(_meqstr, "%s: expected %d, got %d.", message, expected, actual); \
+		sprintf(_meqstr, "%s: expected %d, got %d.", (message), (expected), (actual)); \
 		mu_assert(_meqstr, (expected) == (actual)); \
 } while(0)
 
 #define mu_assert_neq(actual, expected, message) do { \
 		char _meqstr[2048]; \
-		sprintf(_meqstr, "%s: expected not %d, got %d.", message, expected, actual); \
+		sprintf(_meqstr, "%s: expected not %d, got %d.", (message), (expected), (actual)); \
 		mu_assert(_meqstr, (expected) != (actual)); \
 } while(0)
 
 #define mu_assert_streq(actual, expected, message) do { \
 		char _meqstr[2048]; \
-		sprintf(_meqstr, "%s: expected %s, got %s.", message, expected, actual); \
+		sprintf(_meqstr, "%s: expected %s, got %s.", (message), (expected), (actual)); \
 		mu_assert(_meqstr, strcmp((expected), (actual)) == 0); \
+} while(0)
+
+#define mu_assert_memeq(actual, expected, len, message) do { \
+		char _meqstr[2048]; \
+		sprintf(_meqstr, "%s: expected ", message); \
+		sprint_mem(_meqstr + strlen(_meqstr), (expected), (len)); \
+		sprintf(_meqstr + strlen(_meqstr), ", got "); \
+		sprint_mem(_meqstr + strlen(_meqstr), (actual), (len)); \
+		mu_assert(_meqstr, memcmp((expected), (actual), (len)) == 0); \
 } while(0)
 
 #define mu_run_test(test) do { int result; \
