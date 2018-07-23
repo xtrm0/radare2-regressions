@@ -303,3 +303,20 @@ var int local_14h @ fp-0x14
 var int local_10h @ fp-0x10
 arg unsigned long arg2 @ r1
 RUN
+
+NAME=format string parse
+FILE=../bins/anal/format
+CMDS=<<EXPECT
+aa
+afta
+s main
+afv
+EXPECT=<<RUN
+var int local_25h @ rbp-0x25
+var signed int local_24h @ rbp-0x24
+var unsigned int local_20h @ rbp-0x20
+var int local_1ch @ rbp-0x1c
+var char * local_18h @ rbp-0x18
+var long int local_10h @ rbp-0x10
+var char * local_8h @ rbp-0x8
+RUN
