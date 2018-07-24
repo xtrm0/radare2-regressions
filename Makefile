@@ -33,7 +33,7 @@ all:
 	-$(MAKE) overlay-apply
 	$(MAKE) alltargets
 
-alltargets: js-tests radare2 commands formats tools io tools archos unit_tests
+alltargets: js-tests radare2 commands formats io archos unit_tests
 
 radare2:
 	@if [ -f ../binr/radare2/radare2 ]; then $(SHELL) run_tests.sh ../t ; fi
@@ -45,9 +45,6 @@ dbg.linux:
 
 commands:
 	$(SHELL) run_tests.sh
-
-tools:
-	$(SHELL) run_tests.sh t.tools
 
 io:
 	$(SHELL) run_tests.sh t.io
@@ -64,10 +61,6 @@ format.pdb:
 format.pe:
 	$(SHELL) run_tests.sh t.formats/pe
 
-
-tools: rasm2
-rasm2:
-	$(SHELL) run_tests.sh t.tools/rasm2
 
 keystone:
 	$(SHELL) run_tests.sh t.extras/keystone

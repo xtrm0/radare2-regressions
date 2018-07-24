@@ -339,7 +339,7 @@ class NewRegressions {
         }
         continue;
       }
-      if (source.indexOf('asm') !== -1) {
+      if (source.indexOf('asm') !== -1 && source.indexOf('rasm2') === -1) {
         let tests = parseTestAsm(source, line);
         for (let t of tests) {
           this.promises.push(this.runTestAsm.bind(this)(t, this.checkTestResult.bind(this)));
