@@ -684,12 +684,12 @@ class NewRegressions {
         if (test.stderrFail) {
           if ((test.stderr.match(/\n/g) || []).length > 1) {
             if (test.expectErrEndString !== undefined) {
-              common.highlightTrailingWs(null, '\nEXPECT_ERR=<<' + test.expectErrEndString + '\n' + test.stderr);
+              common.highlightTrailingWs(null, 'EXPECT_ERR=<<' + test.expectErrEndString + '\n' + test.stderr);
             } else {
               if (test.expectErrDelim === undefined) {
                 test.expectErrDelim = '%';
               }
-              common.highlightTrailingWs(null, '\nEXPECT_ERR=' + test.expectErrDelim + test.stderr
+              common.highlightTrailingWs(null, 'EXPECT_ERR=' + test.expectErrDelim + test.stderr
                                          + test.expectErrDelim + '\n');
             }
           } else {
