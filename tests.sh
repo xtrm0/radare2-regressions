@@ -111,7 +111,7 @@ dump_test() {
         if [ ${NUM_DELIMS} -eq 0 ]; then
           DELIM="%"
         else
-          echo "ERROR: No suitable delimiter found from '\"%"
+          echo "ERROR: No suitable delimiter found from '\"% for EXPECT"
           exit 1
         fi
       fi
@@ -132,12 +132,39 @@ dump_test() {
   if [ -n "$EXPECT_ERR" ]; then
     COUNT_NL=$(printf "%s" "$EXPECT_ERR" | wc -l)
     if [ ${COUNT_NL} -gt 1 ]; then
-      echo "ERROR: Multiline EXPECT_ERR not supported"
-      exit 1
-    fi
-    printf "%s" "EXPECT_ERR=$EXPECT_ERR"
-    if [ ${COUNT_NL} -eq 0 ]; then
-      echo
+      END=$(printf "%s" "$EXPECT_ERR" | tail -c 1)
+      if [ "$END" != "" ] && [ -n "$EXPECT_ERR" ]; then
+        NUM_DELIMS=$(printf "%s" "$EXPECT_ERR" | tr -cd \' | wc -c)
+        if [ ${NUM_DELIMS} -eq 0 ]; then
+          DELIM="'"
+        else
+          NUM_DELIMS=$(printf "%s" "$EXPECT_ERR" | tr -cd \" | wc -c)
+          if [ ${NUM_DELIMS} -eq 0 ]; then
+            DELIM='"'
+          else
+            NUM_DELIMS=$(printf "%s" "$EXPECT_ERR" | tr -cd % | wc -c)
+            if [ ${NUM_DELIMS} -eq 0 ]; then
+              DELIM="%"
+            else
+              echo "ERROR: No suitable delimiter found from '\"% for EXPECT_ERR"
+              exit 1
+            fi
+          fi
+        fi
+        echo "EXPECT_ERR=$DELIM$EXPECT_ERR$DELIM"
+      else
+        echo "EXPECT_ERR=<<RUN"
+        printf "%s" "$EXPECT_ERR"
+        END=$(printf "%s" "$EXPECT_ERR" | tail -c 1)
+        if [ "$END" != "" ]; then
+          echo
+        fi
+      fi
+    else
+      printf "%s" "EXPECT_ERR=$EXPECT_ERR"
+      if [ ${COUNT_NL} -eq 0 ]; then
+        echo
+      fi
     fi
   fi
   echo "RUN"

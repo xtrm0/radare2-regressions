@@ -423,7 +423,7 @@ class NewRegressions {
           test.expect64 = false;
           if (vt.startsWith('<<')) {
             const endString = vt.substring(2);
-            test.endString = endString;
+            test.expectEndString = endString;
             test.expect = '';
             i++;
             while (lines[i] !== undefined && !lines[i].startsWith(endString)) {
@@ -461,10 +461,40 @@ class NewRegressions {
           test.expect64 = true;
           break;
         case 'EXPECT_ERR':
-          if (vt.startsWith('<<') || delims.test(vt.charAt(0))) {
-            throw new Error("Multiline or delimited EXPECT_ERR is not supported");
+          if (vt.startsWith('<<')) {
+            const endString = vt.substring(2);
+            test.expectErrEndString = endString;
+            test.expectErr = '';
+            i++;
+            while (lines[i] !== undefined && !lines[i].startsWith(endString)) {
+              test.expectErr += lines[i] + '\n';
+              i++;
+            }
+            if (lines[i] === undefined) {
+              throw new Error('Unexpected EOF in EXPECT_ERR -- did you forget a ' + endString + '?');
+            }
+            i--;
+          } else {
+            const delim = vt.charAt(0);
+            if (delims.test(delim)) {
+              test.expectErrDelim = delim;
+              const startDelim = v.indexOf(delim);
+              let endDelim = v.indexOf(delim, startDelim + 1);
+              if (endDelim == -1) {
+                test.expectErr = v.substring(startDelim + 1) + "\n";
+                i++;
+                while ((endDelim = lines[i].indexOf(delim)) == -1) {
+                  test.expectErr += lines[i] + '\n';
+                  i++;
+                }
+                test.expectErr += lines[i].substring(0, endDelim);
+              } else {
+                test.expectErr = v.substring(startDelim + 1, endDelim);  // No newline added
+              }
+            } else {
+              test.expectErr = v + "\n";
+            }
           }
-          test.expectErr = v + '\n';
           break;
         case 'EXPECT_ERR64':
           test.expect = debase64(v);
@@ -637,8 +667,8 @@ class NewRegressions {
         if (test.expect64) {
           console.log('EXPECT64=' + base64(test.stdout));
         } else if (test.expect64 !== undefined) {
-          if (test.endString !== undefined) {
-            common.highlightTrailingWs(null, '\nEXPECT=<<' + test.endString + '\n' + test.stdout);
+          if (test.expectEndString !== undefined) {
+            common.highlightTrailingWs(null, '\nEXPECT=<<' + test.expectEndString + '\n' + test.stdout);
           } else {
             if (test.expectDelim === undefined) {
               test.expectDelim = '%';
@@ -653,7 +683,15 @@ class NewRegressions {
         }
         if (test.stderrFail) {
           if ((test.stderr.match(/\n/g) || []).length > 1) {
-            console.log('<Multiline EXPECT_ERR is not supported>');
+            if (test.expectErrEndString !== undefined) {
+              common.highlightTrailingWs(null, '\nEXPECT_ERR=<<' + test.expectErrEndString + '\n' + test.stderr);
+            } else {
+              if (test.expectErrDelim === undefined) {
+                test.expectErrDelim = '%';
+              }
+              common.highlightTrailingWs(null, '\nEXPECT_ERR=' + test.expectErrDelim + test.stderr
+                                         + test.expectErrDelim + '\n');
+            }
           } else {
             common.highlightTrailingWs(null, 'EXPECT_ERR=' + test.stderr);
           }

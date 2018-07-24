@@ -323,9 +323,35 @@ function fixTest (test, next) {
           }
         } else if (line.startsWith('EXPECT_ERR=')) {
           if ((test.stderr.match(/\n/g) || []).length > 1) {
-            throw new Error("Multiline stderr output is not supported");
+            const val = line.substring(11);
+            const valTrim = val.trim();
+            if (valTrim.startsWith('<<')) {
+              const endString = valTrim.substring(2);
+              i++;
+              while (!lines[i].startsWith(endString)) {
+                i++;
+              }
+              i--;
+              output += 'EXPECT_ERR=<<' + endString + '\n' + test.stderr;
+            } else {
+              let delim = valTrim.charAt(0);
+              if (delims.test(delim)) {
+                const startDelim = val.indexOf(delim);
+                const endDelim = val.indexOf(delim, startDelim + 1);
+                if (endDelim === -1) {
+                  i++;
+                  while (lines[i].indexOf(delim) === -1) {
+                    i++;
+                  }
+                }
+              } else {
+                delim = '%';
+              }
+              output += 'EXPECT_ERR=' + delim + test.stderr + delim + '\n';
+            }
+          } else {
+            output += 'EXPECT_ERR=' + test.stderr;
           }
-          output += 'EXPECT_ERR=' + test.stderr;
         } else {
           output += line + '\n';
         }
