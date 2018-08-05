@@ -205,7 +205,7 @@ var FILE * stream @ rbp-0x28
 var char * s @ rbp-0x20
 var char * local_18h @ rbp-0x18
 var char * local_10h @ rbp-0x10
-var int local_8h @ rbp-0x8
+var int canary @ rbp-0x8
 RUN
 
 NAME=bashbot test (x86_64)
