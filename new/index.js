@@ -243,7 +243,7 @@ class NewRegressions {
             args.push('-c', test.cmds.join(';'));
           }
           // append testfile
-          args.push(test.file);
+          args.push(...test.file.split(' '));
 
           let res = '';
           let ree = '';
