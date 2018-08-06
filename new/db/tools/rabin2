@@ -474,6 +474,7 @@ Version need section '.gnu.version_r' contains 1 entries:
 RUN
 
 NAME=rabin2 -x pemixed.exe
+BROKEN=1
 FILE=../bins/pe/pemixed.exe
 CMDS=<<EXPECT
 !rabin2 -x ../bins/pe/pemixed.exe
