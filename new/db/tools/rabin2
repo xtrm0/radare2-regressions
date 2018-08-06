@@ -472,3 +472,14 @@ Version need section '.gnu.version_r' contains 1 entries:
   0x00000000: Version: 1  File: libc.so.6  Cnt: 1
   0x00000010:   Name: GLIBC_2.0  Flags: none Version: 2
 RUN
+
+NAME=rabin2 -x pemixed.exe
+FILE=../bins/pe/pemixed.exe
+CMDS=<<EXPECT
+!rabin2 -x ../bins/pe/pemixed.exe
+!rm -r pemixed.exe.fat
+EXPECT=<<RUN
+pemixed.exe.fat/pemixed.exe.unknown_0.0 created (248)
+pemixed.exe.fat/pemixed.exe.unknown_0.1 created (35328)
+pemixed.exe.fat/pemixed.exe.unknown_0.2 created (35328)
+RUN
