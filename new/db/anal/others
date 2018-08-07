@@ -182,7 +182,7 @@ RUN
 NAME=ahi S
 FILE=malloc://16
 EXPECT64=bW92IGVheCwgZXhpdCgpCgo=
-CMDS64=CmUgYXNtLmFyY2g9eDg2CmUgYXNtLmJpdHM9MzIKd3ggYjgwMTAwMDAwMAphaGkgUwpwaSAxCgo=
+CMDS64=ZSBhc20uYXJjaD14ODYKZSBhc20uYml0cz0zMgplIGFzbS5vcz1saW51eAp3eCBiODAxMDAwMDAwCmFoaSBTCnBpIDEK
 RUN
 NAME=iS. and iSj. implementation
 FILE=../bins/anal/lab1B
