@@ -62,7 +62,6 @@ CMDS='
 ??
 ?e
 ?r
-?y
 ?b
 ?f
 ?p
@@ -85,7 +84,6 @@ EXPECT='0
 0
 
 0xrandomnr
-
 0b
 0xrandomnr
 
