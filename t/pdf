@@ -24,7 +24,7 @@ e anal.nopskip=true # if set to true it fucks the test
 aa # full analysis fuckups main
 pd 1 @main'
 EXPECT='/ (fcn) main 44
-|   main ();
+|   main (int argc, char **argv, char **envp);
 |           ; var int local_4h @ rbp-0x4
 |           ; DATA XREF from entry0 (0x40045d)
 |           0x0040052d      55             push rbp                    ; dwarftest.c:4 {

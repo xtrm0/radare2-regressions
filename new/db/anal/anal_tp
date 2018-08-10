@@ -242,8 +242,8 @@ var char * s1 @ rbp-0x1020
 var int local_18h @ rbp-0x18
 arg int arg_1020h @ rbp+0x1020
 arg char * dest @ rbp+0x1470
-arg int arg1 @ rdi
-arg int arg2 @ rsi
+arg int argc @ rdi
+arg char ** argv @ rsi
 var char ** str @ rbp-0xb0
 var signed int local_a4h @ rbp-0xa4
 var signed int local_a0h @ rbp-0xa0
@@ -301,7 +301,7 @@ var char * s @ fp-0x1c
 var char * local_18h @ fp-0x18
 var int local_14h @ fp-0x14
 var int local_10h @ fp-0x10
-arg unsigned long arg2 @ r1
+arg char ** argv @ r1
 RUN
 
 NAME=format string parse
@@ -319,4 +319,22 @@ var int local_1ch @ rbp-0x1c
 var char * local_18h @ rbp-0x18
 var long int local_10h @ rbp-0x10
 var char * local_8h @ rbp-0x8
+RUN
+
+NAME=local to register var type propgation
+FILE=../bins/anal/l2rbin
+CMDS=<<EXPECT
+aa
+afta
+s main
+afv
+EXPECT=<<RUN
+var char ** local_28h @ rbp-0x28
+var char ** local_20h @ rbp-0x20
+var int local_14h @ rbp-0x14
+var void * local_10h @ rbp-0x10
+var int local_4h @ rbp-0x4
+arg int argc @ rdi
+arg char ** argv @ rsi
+arg char ** envp @ rdx
 RUN
