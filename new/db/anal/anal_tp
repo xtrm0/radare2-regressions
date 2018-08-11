@@ -111,6 +111,8 @@ EXPECT=<<RUN
   sym.funcarg (char *arg1, unsigned int arg2);
 ; var unsigned int local_ch @ rbp-0xc
 ; var char *local_8h @ rbp-0x8
+; arg char *arg1 @ rdi
+; arg unsigned int arg2 @ rsi
 0x0000068a      55             push rbp
 RUN
 
@@ -218,7 +220,7 @@ afv
 s sym.processCmd
 afv
 EXPECT=<<RUN
-var int local_14e0h @ rbp-0x14e0
+var char ** local_14e0h @ rbp-0x14e0
 var int local_14d4h @ rbp-0x14d4
 var int wstatus @ rbp-0x14cc
 var int options @ rbp-0x14c8
