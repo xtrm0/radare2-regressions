@@ -92,7 +92,7 @@ static bool test_vector_new() {
 static void elem_free_test(void *e, void *user) {
 	ut32 e_val = *((ut32 *)e);
 	int *acc = (int *)user;
-	if (e_val < 0 || e_val > FREE_TEST_COUNT) {
+	if (e_val > FREE_TEST_COUNT) {
 		e_val = FREE_TEST_COUNT;
 	}
 	acc[e_val]++;
