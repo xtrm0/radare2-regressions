@@ -1,0 +1,9 @@
+NAME=M68k anal jump
+FILE=../bins/smd/LiquidSpaceDodgerV3.bin
+BROKEN=1
+EXPECT64=MHgwMDAwMDlmMgo=
+CMDS64=YW8gQCAweDAwMDAwMjMwfmp1bXBbMV0K
+RUN
+
+
+
