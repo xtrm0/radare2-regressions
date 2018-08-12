@@ -153,7 +153,7 @@ RUN
 NAME=/as search syscall
 FILE=../bins/elf/analysis/x86-simple
 EXPECT64=MHgwODA0ODA3MCBleGl0Cgo=
-CMDS64=CmFlaW0KYWVpcAovcwoK
+CMDS64=YWVpbQphZWlwCi9hcwo=
 RUN
 NAME=search.from/to for /s
 FILE=../bins/elf/analysis/x86-simple

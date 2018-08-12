@@ -97,7 +97,7 @@ RUN
 NAME=cmd.hit for /s
 FILE=../bins/elf/analysis/x86-simple
 EXPECT64=MHgwODA0ODA3MCBleGl0CmludCAweDgwCgo=
-CMDS64=CmFlaW0KYWVpcAplIGNtZC5oaXQgPSBwaSAxCi9zCg==
+CMDS64=YWVpbQphZWlwCmUgY21kLmhpdCA9IHBpIDEKL2FzCg==
 RUN
 NAME=from/to /v
 FILE=-
