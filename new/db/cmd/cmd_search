@@ -1,4 +1,4 @@
-NAME=/s begin of file
+NAME=/as begin of file
 FILE=../bins/pe/a.exe
 BROKEN=1
 EXPECT64=MHgwMDAwMDAwMCBoaXQwXzAgLk1aLgo=
@@ -150,7 +150,7 @@ FILE=../bins/elf/analysis/x86-simple
 EXPECT64=W3sib2Zmc2V0IjoxMzQ1MTI2NDAsImRlcHRoIjoxLCJpbmZvIjoiRUxGIDMyLWJpdCBMU0IgZXhlY3V0YWJsZSwgSW50ZWwgODAzODYsIHZlcnNpb24gMSJ9XQo=
 CMDS64=L21qCg==
 RUN
-NAME=/s search syscall
+NAME=/as search syscall
 FILE=../bins/elf/analysis/x86-simple
 EXPECT64=MHgwODA0ODA3MCBleGl0Cgo=
 CMDS64=CmFlaW0KYWVpcAovcwoK
