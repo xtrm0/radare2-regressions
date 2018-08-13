@@ -386,7 +386,7 @@ EXPECT='0x00000003 -> 0x00000009  CALL
 run_test
 
 NAME='Reopening projects bin info loading'
-FILE=../../../bins/elf/analysis/main
+FILE=../../bins/elf/analysis/main
 BROKEN=1
 ARGS=
 CMDS='e dir.projects = /tmp/

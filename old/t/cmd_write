@@ -161,7 +161,7 @@ run_test
 
 # see bug #503
 NAME='wt'
-FILE=../../../bins/pe/b.exe
+FILE=../../bins/pe/b.exe
 ARGS=
 CMDS='wt a_piece_of_ls_saved_to_PWD 0x400
 ls -l a_piece_of_ls_saved_to_PWD~[3]
