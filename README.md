@@ -8,14 +8,18 @@ Originally based on work by and now in collaboration with pancake.
 Directory Hierarchy
 -------------------
 
- * t.anal/:      Test scripts covering code analysis within radare2
- * t.asm/:       Test scripts covering assembly within radare2
- * t.esil/:      Test scripts covering use of ESIL within radare2
- * t.formats/:   Test scripts covering detection of binaries within radare2
- * t.archos/:    Platform specific test scripts
- * t/:           Test scripts (presently uncategorised)
+ * new/:         New testsuite written in NodeJS (make js-tests, check new/README.md).
  * unit/:        Unit tests (written in C, using minunit).
  * bins/:        Sample binaries.
+
+**Deprecated**
+
+ * old/t.anal/:      Test scripts covering code analysis within radare2
+ * old/t.asm/:       Test scripts covering assembly within radare2
+ * old/t.esil/:      Test scripts covering use of ESIL within radare2
+ * old/t.formats/:   Test scripts covering detection of binaries within radare2
+ * old/t.archos/:    Platform specific test scripts
+ * old/t/:           Test scripts (presently uncategorised)
  * test.sh:      Test driver script sourced by tests (not to be run manually).
  * run_tests.sh: Run tests for the core features.
  * run_unit.sh:  Run unit tests for the library functions.
@@ -25,6 +29,7 @@ Requirements
 
  * Radare2 installed (and in $PATH or set the R2 environment).
  * Valgrind (optional).
+ * nodeJS
 
 Usage
 -----
