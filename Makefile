@@ -36,7 +36,7 @@ all:
 alltargets: js-tests radare2 commands formats io archos unit_tests
 
 radare2:
-	@if [ -f ../binr/radare2/radare2 ]; then $(SHELL) run_tests.sh ../old/t ; fi
+	@if [ -f ../binr/radare2/radare2 ]; then $(SHELL) run_tests.sh ./old/t ; fi
 
 archos:
 	@$(MAKE) -C old/t.archos
