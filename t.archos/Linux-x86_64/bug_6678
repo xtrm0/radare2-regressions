@@ -1,9 +1,0 @@
-#!/bin/sh
-[ -e tests.sh ] && . ./tests.sh || . ../tests.sh
-
-NAME="bug 6678: crash case"
-FILE=
-CMDS='-d malloc://512 -'
-EXPECT='
-'
-run_test

@@ -22,7 +22,7 @@ do:
 	$(SHELL) run_tests.sh
 
 overlay:
-	if [ -f ../t/overlay ]; then \
+	if [ -f ../old/t/overlay ]; then \
 		$(SHELL) overlay.sh create ; \
 	fi
 
@@ -36,46 +36,46 @@ all:
 alltargets: js-tests radare2 commands formats io archos unit_tests
 
 radare2:
-	@if [ -f ../binr/radare2/radare2 ]; then $(SHELL) run_tests.sh ../t ; fi
+	@if [ -f ../binr/radare2/radare2 ]; then $(SHELL) run_tests.sh ../old/t ; fi
 
 archos:
-	@$(MAKE) -C t.archos
+	@$(MAKE) -C old/t.archos
 dbg.linux:
-	$(SHELL) run_tests.sh t.archos/Linux
+	$(SHELL) run_tests.sh old/t.archos/Linux
 
 commands:
 	$(SHELL) run_tests.sh
 
 io:
-	$(SHELL) run_tests.sh t.io
+	$(SHELL) run_tests.sh old/t.io
 
 formats: format.elf format.mach0 format.others format.pdb format.pe
 format.elf:
-	$(SHELL) run_tests.sh t.formats/elf
+	$(SHELL) run_tests.sh old/t.formats/elf
 format.mach0:
-	$(SHELL) run_tests.sh t.formats/mach0
+	$(SHELL) run_tests.sh old/t.formats/mach0
 format.others:
-	$(SHELL) run_tests.sh t.formats/others
+	$(SHELL) run_tests.sh old/t.formats/others
 format.pdb:
-	$(SHELL) run_tests.sh t.formats/pdb
+	$(SHELL) run_tests.sh old/t.formats/pdb
 format.pe:
-	$(SHELL) run_tests.sh t.formats/pe
+	$(SHELL) run_tests.sh old/t.formats/pe
 
 
 keystone:
-	$(SHELL) run_tests.sh t.extras/keystone
+	$(SHELL) run_tests.sh old/t.extras/keystone
 
 swf:
-	$(SHELL) run_tests.sh t.extras/swf
+	$(SHELL) run_tests.sh old/t.extras/swf
 
 m68k-extras:
-	$(SHELL) run_tests.sh t.extras/m68k
+	$(SHELL) run_tests.sh old/t.extras/m68k
 
 olly-extras:
-	$(SHELL) run_tests.sh t.extras/x86_olly
+	$(SHELL) run_tests.sh old/t.extras/x86_olly
 
 dwarf:
-	$(SHELL) run_tests.sh t.extras/dwarf
+	$(SHELL) run_tests.sh old/t.extras/dwarf
 
 broken:
 	grep BROKEN=1 t -r -l

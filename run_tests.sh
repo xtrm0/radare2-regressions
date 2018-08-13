@@ -53,7 +53,7 @@ fi
 
 R=$PWD
 # Run all tests.
-T="t"; [ -n "$1" ] && T="$1"
+T="old/t"; [ -n "$1" ] && T="$1"
 if [ -f "$T" -a -x "$T" ]; then
   BDIR=`dirname $T`
   FILE=`basename $T`
