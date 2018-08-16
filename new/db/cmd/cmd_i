@@ -526,8 +526,7 @@ ARGS=-n
 CMDS='e bin.strpurge=all,!0x2fa,!0x1953
 izzj
 '
-EXPECT='[{"vaddr":762,"paddr":762,"ordinal":4,"size":5,"length":4,"section":"","type":"ascii","string":"cHV0cw=="},{"vaddr":6483,"paddr":6483,"ordinal":65,"size":18,"length":17,"section":"","type":"ascii","string":"cHV0c0BAR0xJQkNfMi4yLjU="}]
-'
+EXPECT='[{"vaddr":762,"paddr":762,"ordinal":4,"size":5,"length":4,"section":"","type":"ascii","string":"cHV0cw=="},{"vaddr":6483,"paddr":6483,"ordinal":65,"size":18,"length":17,"section":"","type":"ascii","string":"cHV0c0BAR0xJQkNfMi4yLjU="}]'
 RUN
 NAME=i (no rbin - file x86_64)
 FILE=../bins/elf/analysis/hello-linux-x86_64
