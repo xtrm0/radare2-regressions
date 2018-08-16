@@ -526,7 +526,7 @@ ARGS=-n
 CMDS='e bin.strpurge=all,!0x2fa,!0x1953
 izzj
 '
-EXPECT='{"strings":[{"vaddr":762,"paddr":762,"ordinal":4,"size":5,"length":4,"section":"","type":"ascii","string":"cHV0cw=="},{"vaddr":6483,"paddr":6483,"ordinal":65,"size":18,"length":17,"section":"","type":"ascii","string":"cHV0c0BAR0xJQkNfMi4yLjU="}]}
+EXPECT='[{"vaddr":762,"paddr":762,"ordinal":4,"size":5,"length":4,"section":"","type":"ascii","string":"cHV0cw=="},{"vaddr":6483,"paddr":6483,"ordinal":65,"size":18,"length":17,"section":"","type":"ascii","string":"cHV0c0BAR0xJQkNfMi4yLjU="}]
 '
 RUN
 NAME=i (no rbin - file x86_64)
@@ -602,7 +602,7 @@ CMDS64=ZSBiaW4uc3RycHVyZ2U9YWxsLCE0MjAyOTk2LCE0MjAzMDA3LCE0MjAzMjA4Cml6ago=
 RUN
 NAME=izzj unicode blocks
 FILE=../bins/elf/strenc-guess-utf32le
-EXPECT64=eyJzdHJpbmdzIjpbeyJ2YWRkciI6NDE5NTkyMCwicGFkZHIiOjE2MTYsIm9yZGluYWwiOjEzLCJzaXplIjo0NCwibGVuZ3RoIjoxMCwic2VjdGlvbiI6Ii5yb2RhdGEiLCJ0eXBlIjoidXRmMzJsZSIsInN0cmluZyI6IllXSmpaR1ZtOEpDTmlDQWdadz09IiwiYmxvY2tzIjpbIkJhc2ljIExhdGluIiwiR290aGljIl19XX0KCg==
+EXPECT64=W3sidmFkZHIiOjQxOTU5MjAsInBhZGRyIjoxNjE2LCJvcmRpbmFsIjoxMywic2l6ZSI6NDQsImxlbmd0aCI6MTAsInNlY3Rpb24iOiIucm9kYXRhIiwidHlwZSI6InV0ZjMybGUiLCJzdHJpbmciOiJZV0pqWkdWbThKQ05pQ0FnWnc9PSIsImJsb2NrcyI6WyJCYXNpYyBMYXRpbiIsIkdvdGhpYyJdfV0K
 CMDS64=ZSBiaW4uc3RycHVyZ2U9YWxsLCE0MTk1OTIwCml6emoK
 RUN
 NAME=iz/izz bin.strpurge
