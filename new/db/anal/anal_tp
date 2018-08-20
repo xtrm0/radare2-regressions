@@ -340,3 +340,23 @@ arg int argc @ rdi
 arg char ** argv @ rsi
 arg char ** envp @ rdx
 RUN
+
+NAME=constrained type
+FILE=../bins/anal/constr_type
+CMDS=<<EXPECT
+e anal.types.constraint = true
+aaa
+s sym.single_cond
+pd 1~4h
+s sym.range_small
+pd 1~14h
+s sym.range_high
+pd 1~4h
+s sym.range_or
+pd 1~4h
+EXPECT=<<RUN
+|           ; var signed int local_4h  { > 0xa} @ rbp-0x4
+|           ; var signed int local_14h  { > 0x0 && <= 0x9} @ rbp-0x14
+|           ; var signed int local_4h  { > 0x64 && <= 0xc7} @ rbp-0x4
+|           ; var signed int local_4h  { > 0xff && <= 0x12b || > 0x14 && <= 0x31 || > 0x6f && <= 0xdd} @ rbp-0x4
+RUN
