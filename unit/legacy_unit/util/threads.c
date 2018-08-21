@@ -1,7 +1,7 @@
 #include <r_th.h>
 #include <r_util.h>
 
-int looper(struct r_th_t *th) {
+RThreadFunctionRet looper(struct r_th_t *th) {
 	int i;
 	int *ctr = th->user;
 	for (i=0;i<9999;i++) {
@@ -14,7 +14,7 @@ int looper(struct r_th_t *th) {
 		sleep (1);
 #endif
 	}
-	return 0; // do not loop
+	return R_TH_STOP; // do not loop
 }
 
 int test1() {
@@ -42,7 +42,7 @@ int test1() {
 #endif
 	/* wait and free */
 	r_th_wait (th);
-	r_th_free (th);
+	r_th_kill_free (th);
 
 	printf ("\nresult %d\n", ctr);
 	return 0;
