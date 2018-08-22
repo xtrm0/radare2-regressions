@@ -259,6 +259,19 @@ EXPECT=''
 
 run_test
 
+NAME='Save project for a binary after analysis'
+FILE='../../bins/elf/analysis/main'
+BROKEN=1
+ARGS=''
+CMDS='e dir.projects = /tmp/
+aaa
+Ps blah
+Po blah
+y'
+EXPECT=''
+
+run_test
+
 NAME='Save project for a binary without saving its info at a specific map offset'
 FILE='../../bins/elf/analysis/main'
 BROKEN=
