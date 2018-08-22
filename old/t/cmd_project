@@ -266,7 +266,8 @@ ARGS=''
 CMDS='e dir.projects = /tmp/
 aaa
 Ps blah
-Po blah
+  # Following command hangs:
+  # Po blah
 y'
 EXPECT=''
 
