@@ -61,7 +61,7 @@ CMDS64=YWFjCmFmbH4/Cgo=
 RUN
 NAME=raw aac (using a PIC bin)
 FILE=../bins/elf/libmagic.so
-EXPECT64=MjA3Cgo=
+EXPECT64=MjAyCg==
 CMDS64=YWFjCmFmbH4/Cgo=
 RUN
 NAME=raw aac with maps (using a PIC bin)
