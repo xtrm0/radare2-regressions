@@ -249,3 +249,24 @@ FILE=../../bins/elf/analysis/bug-it-bb
 CMDS64=YWFhIDsgcyAweDAwMDEwMDc0IDsgYWZiCg==
 EXPECT64=MHgwMDAxMDA3NCAweDAwMDEwMDdhIDAwOjAwMDAgNiBqIDB4MDAwMTAwN2EgZiAweDAwMDEwMDdlIDB4MDAwMTAwN2EgMHgwMDAxMDA3ZSAwMDowMDAwIDQgaiAweDAwMDEwMDgwIDB4MDAwMTAwN2UgMHgwMDAxMDA4MCAwMDowMDAwIDIgaiAweDAwMDEwMDgwIDB4MDAwMTAwODAgMHgwMDAxMDA4MiAwMDowMDAwIDIK
 RUN
+
+NAME=arm jump table
+FILE=../bins/elf/analysis/callback.elf
+CMDS=<<EXPECT
+af @ sym.input_handler2
+CC. @ 0x000105b8~?(7
+EXPECT=<<RUN
+1
+RUN
+
+
+NAME=arm jump table
+FILE=../bins/elf/analysis/mobile_bank.45115ff5f655d94fc26cb5244928b3fc
+CMDS=<<EXPECT
+af @ 0x11284
+CC. @ 0x000112b0~?(8
+EXPECT=<<RUN
+1
+RUN
+
+
