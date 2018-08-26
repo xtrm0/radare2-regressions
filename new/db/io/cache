@@ -26,6 +26,14 @@ CMDS64=CmUgaW8uY2FjaGUgPSB0cnVlCnB4IDMyCnMgKzEKcHggMzEKcyAtMQp3eCA5MApweCAzMgpzI
 RUN
 NAME=io.cache: cache write, cache undo
 FILE=malloc://1024
-EXPECT64=NjI2MQo2MTYxCjAwMDAKCg==
-CMDS64=CmUgaW8uY2FjaGU9MQp3IGFhICAgICAKdyBiCnA4IDIKd2MtCnA4IDIKd2MtIApwOCAyCgo=
+CMDS=<<EXPECT
+e io.cache=1
+w a
+w b @ 1
+p8 2
+wc- 0 2
+p8 2
+EXPECT=<<RUN
+6162
+0000
 RUN
