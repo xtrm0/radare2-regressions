@@ -674,8 +674,8 @@ pd 4 @ 0x0001045c
 ?e
 e asm.var.subonly=true
 s main
-afvn local_ch local2
-afvn arg_8h arg1
+afvn local2 local_ch
+afvn arg1 arg_8h
 pd 4 @ 0x0001045c
 EXPECT=<<RUN
 |           0x0001045c      STR R0, [local_8h]
