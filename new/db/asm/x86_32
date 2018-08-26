@@ -521,6 +521,7 @@ d "xlatb" D7
 d "xor al, 0" 3400
 d "xor al, byte [eax]" 3200
 d "xor byte [eax], al" 3000
+d "xor byte [eax], 0xff" 8030FF
 d "xor dword [eax], eax" 3100
 d "xor eax, dword [eax]" 3300
 d "xrstor [eax]" 0fae28
@@ -2163,6 +2164,7 @@ a "xor bp, 0x8080" 6681f58080
 a "xor si, 0x8" 6683f608
 a "xor al, byte [eax]" 3200
 a "xor byte [eax], al" 3000
+aB "xor byte [eax], 0xff" 8030FF
 a "xor dword [eax], eax" 3100
 a "xor eax, dword [eax]" 3300
 a "xor [eax], eax" 3100
