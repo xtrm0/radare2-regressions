@@ -22,7 +22,6 @@ RUN
 
 NAME=omp
 FILE=malloc://32
-BROKEN=1
 CMDS=<<EXPECT
 o malloc://32 0x10 rw
 b 48
@@ -43,7 +42,6 @@ RUN
 
 NAME=omp 2
 FILE=malloc://3
-BROKEN=1
 CMDS=<<EXPECT
 b 3
 wow 90
@@ -60,7 +58,6 @@ RUN
 
 NAME=omp 3
 FILE=--
-BROKEN=1
 CMDS=<<EXPECT
 o malloc://8 0 rw
 o malloc://12 4 rw
