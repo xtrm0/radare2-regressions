@@ -3,6 +3,12 @@
   "version": "0.1.0",
   "description": "new testsuite for r2 written in nodejs",
   "main": "index.js",
+  "bin": {
+    "r2r": "bin/r2r.js"
+  },
+  "engines": {
+    "node": ">=8.x"
+  },
   "dependencies": {
     "co": "*",
     "colors": "^1.2.5",
