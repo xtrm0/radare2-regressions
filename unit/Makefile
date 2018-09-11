@@ -5,9 +5,8 @@ CFLAGS += $(shell pkg-config --cflags r_core) -g
 
 all: $(BINS)
 
-%: %.o
-	$(CC) $(CFLAGS) $(LDFLAGS) $@.c -o $@
-
+%:
+	$(CC) $@.c -o $@ $(CFLAGS) $(LDFLAGS)
 
 run:
 	r=0 ; for a in $(BINS) ; do ./$$a || r=1; done ; exit $r
