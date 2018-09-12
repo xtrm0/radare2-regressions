@@ -319,3 +319,13 @@ double: 0.000000
 trits   0t2
 '
 run_test
+
+NAME="?*"
+FILE=--
+ARGS=
+CMDS="?*~?display zignspace
+?*~?List all loaded types as json"
+EXPECT='1
+1
+'
+run_test
