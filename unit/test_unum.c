@@ -67,7 +67,7 @@ bool test_r_num_str_split() {
 	char *str = malloc (0x20);
 	strcpy (str, "1 1 + 2 1 + (2 + 3) 4 ");
 	//expected "1\01 + 2\01 + (2 + 3)\04\0"
-	int i, count = r_num_str_split (str);
+	int count = r_num_str_split (str);
 	mu_assert_eq (count, 4, "r_num_str_split (str) == 4");
 	mu_assert_streq (str+0, "1", "1");
 	mu_assert_streq (str+2, "1 + 2", "1 + 2");

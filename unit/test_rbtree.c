@@ -86,7 +86,6 @@ bool test_r_rbtree_bound(void) {
 	RBIter it;
 	RBNode *tree = NULL;
 	struct Node *x;
-	void *data;
 	int i;
 	for (i = 0; i < 99; i++) {
 		x = make (i);
@@ -126,7 +125,6 @@ bool test_r_rbtree_bound(void) {
 }
 
 static bool insert_delete(int *a, int n, RBNodeSum sum) {
-	RBIter it;
 	RBNode *tree = NULL;
 	struct Node *x;
 	int i, t;

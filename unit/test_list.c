@@ -147,7 +147,6 @@ bool test_r_list_length(void) {
 	RList* list = r_list_new ();
 	RList* list2 = r_list_new ();
 	RListIter *iter;
-	void *v;
 	int count = 0;
 	int test1 = 33508;
 	int test2 = 33480;
@@ -169,10 +168,10 @@ bool test_r_list_length(void) {
 	r_list_append (list, (void*)&test1);
 	mu_assert_eq (list->length, 3, "Third length check");
 
-	v = r_list_pop (list);
+	r_list_pop (list);
 	mu_assert_eq (list->length, 2, "Fourth length check");
 
-	v = r_list_pop_head (list);
+	r_list_pop_head (list);
 	mu_assert_eq (list->length, 1, "Fifth length check");
 
 	r_list_insert (list, 2, (void*)&test2);
@@ -256,9 +255,9 @@ bool test_r_list_sort4(void) {
 		next = next->n;
 	}
 
+#if 0 // Debug Print
 	char *data;
 
-#if 0 // Debug Print
 	printf("after sorted 1 \n");
 	r_list_foreach (list, next, data) {
 		printf("l -> %s\n", data);

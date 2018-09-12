@@ -72,7 +72,7 @@ bool test_va_malloc_zero(void) {
 	buf = 0xdeadbeefcafebabe;
 	ret = r_io_read_at (io, 0, (ut8 *)&buf, 8);
 	mu_assert ("should be able to read", ret);
-	mu_assert_memeq ((ut8*)&buf, "\x00\x00\x00\x00\x00\x00\x00\x00", 8, "0 should be there initially");
+	mu_assert_memeq ((ut8 *)&buf, (ut8 *)"\x00\x00\x00\x00\x00\x00\x00\x00", 8, "0 should be there initially");
 	r_io_free (io);
 
 	io = r_io_new ();
@@ -82,7 +82,7 @@ bool test_va_malloc_zero(void) {
 	ret = r_io_read_at (io, 0, (ut8 *)&buf, 8);
 	mu_assert ("should be able to read", ret);
 	mu_test_status = MU_TEST_BROKEN;
-	mu_assert_memeq ((ut8*)&buf, "\x00\x00\x00\x00\x00\x00\x00\x00", 8, "0 should be there initially");
+	mu_assert_memeq ((ut8 *)&buf, (ut8 *)"\x00\x00\x00\x00\x00\x00\x00\x00", 8, "0 should be there initially");
 	r_io_free (io);
 
 	mu_end;
@@ -99,32 +99,32 @@ bool test_r_io_priority(void) {
 	map0 = r_io_map_get (io, 0)->id;
 	ret = r_io_read_at (io, 0, (ut8 *)&buf, 8);
 	mu_assert ("should be able to read", ret);
-	mu_assert_memeq ((ut8*)&buf, "\x00\x00\x00\x00\x00\x00\x00\x00", 8, "0 should be there initially");
+	mu_assert_memeq ((ut8 *)&buf, (ut8 *)"\x00\x00\x00\x00\x00\x00\x00\x00", 8, "0 should be there initially");
 	buf = 0x9090909090909090;
 	r_io_write_at (io, 0, (ut8 *)&buf, 8);
-	mu_assert_memeq ((ut8*)&buf, "\x90\x90\x90\x90\x90\x90\x90\x90", 8, "0x90 should have been written");
+	mu_assert_memeq ((ut8 *)&buf, (ut8 *)"\x90\x90\x90\x90\x90\x90\x90\x90", 8, "0x90 should have been written");
 
 	r_io_open_at (io, "malloc://2", R_IO_RW, 0644, 0x4);
 	map1 = r_io_map_get (io, 4)->id;
 	r_io_read_at (io, 0, (ut8 *)&buf, 8);
-	mu_assert_memeq ((ut8*)&buf, "\x90\x90\x90\x90\x00\x00\x90\x90", 8, "0x00 from map1 should overlap");
+	mu_assert_memeq ((ut8 *)&buf, (ut8 *)"\x90\x90\x90\x90\x00\x00\x90\x90", 8, "0x00 from map1 should overlap");
 
 	buf ^= UT64_MAX;
 	r_io_write_at (io, 0, (ut8 *)&buf, 8);
 	r_io_read_at (io, 0, (ut8 *)&buf, 8);
-	mu_assert_memeq ((ut8*)&buf, "\x6f\x6f\x6f\x6f\xff\xff\x6f\x6f", 8, "memory has been xored");
+	mu_assert_memeq ((ut8 *)&buf, (ut8 *)"\x6f\x6f\x6f\x6f\xff\xff\x6f\x6f", 8, "memory has been xored");
 
 	r_io_map_priorize (io, map0);
 	r_io_read_at (io, 0, (ut8 *)&buf, 8);
-	mu_assert_memeq ((ut8*)&buf, "\x6f\x6f\x6f\x6f\x90\x90\x6f\x6f", 8, "map0 should have been prioritized");
+	mu_assert_memeq ((ut8 *)&buf, (ut8 *)"\x6f\x6f\x6f\x6f\x90\x90\x6f\x6f", 8, "map0 should have been prioritized");
 
 	r_io_map_remap (io, map1, 0x2);
 	r_io_read_at (io, 0, (ut8 *)&buf, 8);
-	mu_assert_memeq ((ut8*)&buf, "\x6f\x6f\x6f\x6f\x90\x90\x6f\x6f", 8, "map1 should have been remapped");
+	mu_assert_memeq ((ut8 *)&buf, (ut8 *)"\x6f\x6f\x6f\x6f\x90\x90\x6f\x6f", 8, "map1 should have been remapped");
 
 	r_io_map_priorize (io, map1);
 	r_io_read_at (io, 0, (ut8 *)&buf, 8);
-	mu_assert_memeq ((ut8*)&buf, "\x6f\x6f\xff\xff\x90\x90\x6f\x6f", 8, "map1 should have been prioritized");
+	mu_assert_memeq ((ut8 *)&buf, (ut8 *)"\x6f\x6f\xff\xff\x90\x90\x6f\x6f", 8, "map1 should have been prioritized");
 
 	r_io_free (io);
 	mu_end;

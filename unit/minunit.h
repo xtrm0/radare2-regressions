@@ -78,6 +78,18 @@ void sprint_mem(char *out, ut8 *buf, size_t len) {
 		mu_assert(_meqstr, (expected) != (actual)); \
 } while(0)
 
+#define mu_assert_null(actual, message) do {			\
+	char _meqstr[2048];					\
+	sprintf(_meqstr, "%s: expected to be NULL but it wasn't.", (message)); \
+	mu_assert(_meqstr, (actual) == NULL);		\
+} while(0)
+
+#define mu_assert_notnull(actual, message) do {				\
+	char _meqstr[2048];					\
+	sprintf(_meqstr, "%s: expected to not be NULL but it was.", (message)); \
+	mu_assert(_meqstr, (actual) != NULL);			\
+} while(0)
+
 #define mu_assert_eq_fmt(actual, expected, message, fmt) do { \
 		char _meqstr[2048]; \
 		sprintf(_meqstr, "%s: expected "fmt", got "fmt".", (message), (expected), (actual)); \
