@@ -54,6 +54,7 @@ FILE=../bins/pe/a.exe
 CMDS=!rabin2 -K md5 -S ${R2_FILE}
 EXPECT=<<RUN
 [Sections]
+Nm Paddr       Size Vaddr      Memsz Perms Checksum          Name
 00 0x00000400  2560 0x00401000  4096 -r-x md5=3d6a5b8dc5e41b09659638ad5735e5b5 .text
 01 0x00000e00   512 0x00402000  4096 -rw- md5=b3c542ba67f2d1a949fa1a25ce22f7e3 .data
 02 0x00001000   512 0x00403000  4096 -r-- md5=c9a877a4e945b087b8323830442c88d6 .rdata
@@ -65,14 +66,14 @@ NAME=rabin2 -s file pe
 FILE=../bins/pe/a.exe
 CMDS=!rabin2 -s ${R2_FILE}|wc -l|awk "{print \$1}"
 EXPECT=<<RUN
-21
+22
 RUN
 
 NAME=rabin2 -s file elf
 FILE=../bins/elf/analysis/x86-helloworld-gcc
 CMDS=!rabin2 -s ${R2_FILE}|wc -l|awk "{print \$1}"
 EXPECT=<<RUN
-66
+67
 RUN
 
 NAME=rabin2 -S, -SS, -rS and -rSS file elf
@@ -87,8 +88,8 @@ CMDS=<<EXPECT
 !env RABIN2_PREFIX=prixfixe rabin2 -rS ${R2_FILE} |grep prixfixe. |wc -l |awk "{print \$1}"
 !env RABIN2_PREFIX=prixfixe rabin2 -rSS ${R2_FILE} |grep prixfixe. |wc -l |awk "{print \$1}"
 EXPECT=<<RUN
-31
-10
+32
+11
 121
 37
 30
@@ -101,14 +102,14 @@ NAME=rabin2 -z pe
 FILE=../bins/pe/a.exe
 CMDS=!rabin2 -z ${R2_FILE}|wc -l|awk "{print \$1}"
 EXPECT=<<RUN
-4
+6
 RUN
 
 NAME=rabin2 -z elf
 FILE=../bins/elf/analysis/x86-helloworld-gcc
 CMDS=!rabin2 -z ${R2_FILE}|wc -l|awk "{print \$1}"
 EXPECT=<<RUN
-1
+3
 RUN
 
 NAME=rabin2 -G 0x1000 -rs fatmach0
@@ -200,6 +201,7 @@ FILE=../bins/mach0/fatmach0-3true
 CMDS=!rabin2 -a x86 -b 32 -i ${R2_FILE}
 EXPECT=<<RUN
 [Imports]
+Num  Vaddr       Bind      Type Name
    0 0x00001f94    NONE    FUNC exit
    1 0x00000000    NONE    FUNC dyld_stub_binder
 RUN
@@ -209,6 +211,7 @@ FILE=../bins/mach0/fatmach0-3true
 CMDS=!rabin2 -G 0x5000 -i ${R2_FILE}
 EXPECT=<<RUN
 [Imports]
+Num  Vaddr       Bind      Type Name
    0 0x00001f94    NONE    FUNC exit
    1 0x00000000    NONE    FUNC dyld_stub_binder
 RUN
@@ -238,6 +241,7 @@ rm /tmp/rabin2testpe1.exe
 EXPECT=<<RUN
 wx e0000040 @ 0x244
 [Sections]
+Nm Paddr       Size Vaddr      Memsz Perms Name
 00 0x00000400 35328 0x00401000 36864 -r-x .text
 01 0x00008e00  9216 0x0040a000 12288 -r-- .rdata
 02 0x0000b200  4096 0x0040d000 12288 -rwx .data
@@ -255,6 +259,7 @@ rm /tmp/rabin2testpe2.exe
 EXPECT=<<RUN
 wx 10000000 @ 0x16c
 [Sections]
+Nm Paddr       Size Vaddr      Memsz Perms Name
 00 0x00000200   512 0x00401000  4096 s--- sect_0
 RUN
 
@@ -301,6 +306,7 @@ FILE=../bins/elf/analysis/x86-helloworld-gcc
 CMDS=!rabin2 -g ${R2_FILE}
 EXPECT=<<RUN
 [Sections]
+Nm Paddr       Size Vaddr      Memsz Perms Name
 00 0x00000000     0 0x00000000     0 ---- 
 01 0x00000134    19 0x08048134    19 -r-- .interp
 02 0x00000148    32 0x08048148    32 -r-- .note.ABI_tag
@@ -332,6 +338,7 @@ EXPECT=<<RUN
 28 0x00000c7c  1104 0x00000000  1104 ---- .symtab
 29 0x000010cc   599 0x00000000   599 ---- .strtab
 [Segments]
+Nm Paddr       Size Vaddr      Memsz Perms Name
 00 0x00000034   256 0x08048034   256 -r-x PHDR
 01 0x00000134    19 0x08048134    19 -r-- INTERP
 02 0x00000000  1436 0x08048000  1436 -r-x LOAD0
@@ -353,10 +360,12 @@ vaddr=0x080483b0 paddr=0x000003b0 baddr=0x08048000 laddr=0x00000000 hvaddr=0x080
 [Main]
 vaddr=0x08048400 paddr=0x00000400
 [Imports]
+Num  Vaddr       Bind      Type Name
    1 0x080482d0  GLOBAL    FUNC puts
    2 0x080482e0    WEAK  NOTYPE __gmon_start__
    3 0x080482f0  GLOBAL    FUNC __libc_start_main
 [Symbols]
+Num Paddr      Vaddr      Bind     Type Size Name
 001 0x00000134 0x08048134  LOCAL   SECT    0
 002 0x00000148 0x08048148  LOCAL   SECT    0
 003 0x00000168 0x08048168  LOCAL   SECT    0
@@ -422,6 +431,8 @@ vaddr=0x08048400 paddr=0x00000400
 001 0x000002d0 0x080482d0 GLOBAL   FUNC   16 imp.puts
 002 0x000002e0 0x080482e0   WEAK NOTYPE   16 imp.__gmon_start__
 003 0x000002f0 0x080482f0 GLOBAL   FUNC   16 imp.__libc_start_main
+[Strings]
+Num Vaddr      Paddr      Len Size Section  Type  String
 000 0x000004b0 0x080484b0  12  13 (.rodata) ascii Hello world!
 arch     x86
 baddr    0x8048000

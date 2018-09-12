@@ -1,6 +1,6 @@
 NAME=ELF: core segments
 FILE=../bins/elf/analysis/core.1159
-EXPECT64=MTkKCg==
+EXPECT64=MjAK
 CMDS64=aVNTfj8K
 RUN
 NAME=ELF: core sections with reg name
