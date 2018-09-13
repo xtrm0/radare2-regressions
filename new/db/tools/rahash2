@@ -624,14 +624,14 @@ NAME=rahash2 -E rol
 FILE=-
 CMDS=!rahash2 -E rol -S 03 -x "31ed4989" | rax2 -S
 EXPECT=<<RUN
-88684848
+896f4a4c
 RUN
 
 NAME=rahash2 -E ror
 FILE=-
 CMDS=!rahash2 -E ror -S 04 -x "62da9212" | rax2 -S
 EXPECT=<<RUN
-060d0901
+26ad2921
 RUN
 
 NAME=rahash2 -E base91
