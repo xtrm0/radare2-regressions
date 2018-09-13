@@ -12,6 +12,14 @@ all:
 	npm install
 	node bin/r2r.js
 
+fix:
+	npm install
+	node bin/r2r.js -i
+
+#fix-broken fb:
+#	npm install
+#	node bin/r2r.js -i
+
 generate:
 	mkdir -p db/cmd
 	cd .. ; for a in $(TESTS) ; do \

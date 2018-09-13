@@ -193,7 +193,7 @@ CMDS64=CmFmIEBAIHN5bSoKYWZsfndlYWsKCg==
 RUN
 NAME=ELF ARM: aa
 FILE=../bins/elf/analysis/arm_32_flags0
-EXPECT64=MTgKMTUK
+EXPECT64=MTYKMTUK
 CMDS64=CmFhCmZ+c3ltPwphZmx+PwoK
 RUN
 NAME=ELF ARM: aa2
@@ -203,7 +203,7 @@ CMDS64=CmFhCmFmbAoK
 RUN
 NAME=ELF ARM: af @@ sym.*
 FILE=../bins/elf/analysis/arm_32_flags0
-EXPECT64=MTkKMTUKCg==
+EXPECT64=MTcKMTUK
 CMDS64=CmFmIEBAIHN5bS4qCmZ+c3ltPwphZmx+PwoK
 RUN
 NAME=ELF ARM: function arg
