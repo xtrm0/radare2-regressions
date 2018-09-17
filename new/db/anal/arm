@@ -259,12 +259,21 @@ EXPECT=<<RUN
 1
 RUN
 
-
 NAME=arm jump table
 FILE=../bins/elf/analysis/mobile_bank.45115ff5f655d94fc26cb5244928b3fc
 CMDS=<<EXPECT
 af @ 0x11284
 CC. @ 0x000112b0~?(8
+EXPECT=<<RUN
+1
+RUN
+
+NAME=arm main analyzed with aaa
+FILE=../bins/elf/analysis/ch23
+BROKEN=1
+CMDS=<<EXPECT
+aaa
+afl~?0x00008470
 EXPECT=<<RUN
 1
 RUN
