@@ -276,3 +276,13 @@ afl~?0x00008470
 EXPECT=<<RUN
 1
 RUN
+
+NAME=arm main in disassembly
+FILE=../bins/elf/analysis/ch23.bin
+BROKEN=1
+CMDS=<<EXPECT
+aaa
+pd 1 @ 0x000083d8~[5]
+EXPECT=<<RUN
+main
+RUN
