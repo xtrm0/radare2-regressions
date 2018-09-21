@@ -360,3 +360,23 @@ EXPECT=<<RUN
 |           ; var signed int local_4h  { > 0x64 && <= 0xc7} @ rbp-0x4
 |           ; var signed int local_4h  { > 0xff && <= 0x12b || > 0x14 && <= 0x31 || > 0x6f && <= 0xdd} @ rbp-0x4
 RUN
+
+NAME=mov str
+FILE=../bins/anal/movstr
+CMDS=<<EXPECT
+aaa
+s main
+afv~local_4h
+EXPECT=<<RUN
+var char * local_4h @ esp+0x4
+RUN
+
+NAME=ret type pointer
+FILE=../bins/anal/tie-test
+CMDS=<<EXPECT
+aaa
+s sym.foo
+afv~local_20h
+EXPECT=<<RUN
+var size_t * local_20h @ rbp-0x20
+RUN
