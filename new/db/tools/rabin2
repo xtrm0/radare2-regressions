@@ -509,6 +509,41 @@ pemixed.exe.fat/pemixed.exe.unknown_0.1 created (35328)
 pemixed.exe.fat/pemixed.exe.unknown_0.2 created (35328)
 RUN
 
+NAME=rabin2 -I elf_cpp
+FILE=../bins/elf/analysis/a.out.cpp
+CMDS=!rabin2 -I ${R2_FILE}
+EXPECT=<<RUN
+arch     x86
+baddr    0x0
+binsz    7051
+bintype  elf
+bits     64
+canary   false
+sanitiz  false
+class    ELF64
+crypto   false
+endian   little
+havecode true
+intrp    /lib64/ld-linux-x86-64.so.2
+lang     c++
+linenum  true
+lsyms    true
+machine  AMD x86-64 architecture
+maxopsz  16
+minopsz  1
+nx       true
+os       linux
+pcalign  0
+pic      true
+relocs   true
+relro    full
+rpath    NONE
+static   false
+stripped false
+subsys   linux
+va       true
+RUN
+
 NAME=rabin2 -I asan
 FILE=../bins/elf/analysis/a.out.asan
 CMDS=!rabin2 -I ${R2_FILE}
