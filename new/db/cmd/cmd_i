@@ -104,6 +104,12 @@ EXPECT='{
 }'
 RUN
 
+NAME=iI-rust
+FILE=../bins/elf/analysis/rust_full
+CMDS=iI~lang
+EXPECT='lang     rust'
+RUN
+
 NAME=im
 FILE=../bins/nes/Pong.nes
 EXPECT64=MQoK
