@@ -107,7 +107,8 @@ RUN
 NAME=iI-rust
 FILE=../bins/elf/analysis/rust_full
 CMDS=iI~lang
-EXPECT='lang     rust'
+EXPECT='lang     rust
+'
 RUN
 
 NAME=im
