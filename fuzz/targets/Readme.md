@@ -7,12 +7,12 @@ This folder contains fuzzing targets for Radare2.
 The build process is designed to be able to use different fuzzing engines, such as AFL or libFuzzer. In order to build the fuzz targets the following environment variables must be set:
 
 - LIB_FUZZING_ENGINE: Specifies the path to the fuzzing engine library. Example: `LIB_FUZZING_ENGINE=/usr/lib/libFuzzer.a`
-- RADARE2_BUILD: Specifies the path to the Radare2 build that will be used to build the fuzzing targets. It is important to build Radare2 with sanitizing and coverage.
+- RADARE2_STATIC_BUILD: Specifies the path to the static Radare2 build that will be used to build the fuzzing targets. It is important to build Radare2 with sanitizing and coverage.
 
 Below is an example on how to build the fuzzing targets with libFuzzer:
 
 ```
-CXX=clang++ CXXFLAGS="-fsanitize=address -fsanitize-coverage=trace-pc-guard" LIB_FUZZING_ENGINE=/usr/lib/libFuzzer.a RADARE2_BUILD=/usr/ make
+CXX=clang++ CXXFLAGS="-fsanitize=address -fsanitize-coverage=trace-pc-guard" LIB_FUZZING_ENGINE=/usr/lib/libFuzzer.a RADARE2_STATIC_BUILD=/r2-static/ make
 ```
 
 And this one is an example on how to build Radare2 with Address Sanitizer (ASAN) and coverage enabled:
