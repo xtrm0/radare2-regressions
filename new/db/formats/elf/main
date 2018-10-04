@@ -52,3 +52,9 @@ FILE=../bins/elf/analysis/main_wrong_sect
 EXPECT64=MHg0MDA1MDYKCg==
 CMDS64=P3YgbWFpbgo=
 RUN
+NAME=main detection linux64 endbr64
+FILE=../bins/elf/analysis/linux_x64_endbr64
+CMDS64=P3YgbWFpbgo=
+EXPECT64=MHg0MDcwCgo=
+RUN
+
