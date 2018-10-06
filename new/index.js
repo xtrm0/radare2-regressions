@@ -346,9 +346,11 @@ class NewRegressions {
         }
         continue;
       }
+/*
       if (line === 'EOF') {
         continue;
       }
+*/
       if (line === 'RUN') {
         const testCallback = this.callbackFromPath(test.from);
         if (testCallback !== null) {
@@ -382,7 +384,7 @@ class NewRegressions {
             const endString = vt.substring(2);
             test.cmdScript = '';
             i++;
-            while (lines[i] != endString) {
+            while (!lines[i].startsWith(endString)) {
               test.cmdScript += lines[i] + '\n';
               i++;
             }
