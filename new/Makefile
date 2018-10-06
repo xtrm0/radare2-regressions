@@ -9,11 +9,11 @@ TESTS+=t.anal/others_anal/aaa
 
 
 all:
-	npm install
+	npm install >/dev/null
 	node bin/r2r.js
 
 fix:
-	npm install
+	npm install > /dev/null
 	node bin/r2r.js -i
 
 #fix-broken fb:
