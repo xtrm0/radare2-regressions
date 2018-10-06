@@ -41,7 +41,7 @@ const args = process.argv.slice(2).map(_ => {
 const delims = /['"%]/;
 
 main(minimist(args, {
-  boolean: ['v', 'verbose', 'i', 'interactive', 'l', 'list'],
+  boolean: ['v', 'verbose', 'i', 'interactive', 'l', 'list' ],
   string: ['g', 'grep']
 }));
 
@@ -274,9 +274,9 @@ function markAsBroken (test, next) {
       }
     }
     fs.writeFileSync(filePath, output);
-    next();
   } catch (err) {
     console.error(err);
+  } finally {
     next();
   }
 }
