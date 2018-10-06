@@ -392,7 +392,7 @@ class NewRegressions {
               test.cmdScript += lines[i] + '\n';
               i++;
             }
-            i--;
+            // i--;
           } else {
             const delim = vt.charAt(0);
             if (delims.test(delim)) {
@@ -442,7 +442,7 @@ class NewRegressions {
             if (lines[i] === undefined) {
               throw new Error('Unexpected EOF in EXPECT -- did you forget a ' + endString + '?');
             }
-            i--;
+            // i--;
           } else {
             const delim = vt.charAt(0);
             if (delims.test(delim)) {
