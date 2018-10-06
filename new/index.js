@@ -57,7 +57,7 @@ class NewRegressions {
       fixed: 0,
       totaltime: 0
     };
-    useScript = !argv.c;
+    useScript = !this.argv.c;
     this.verbose = this.argv.verbose || this.argv.v;
     this.interactive = this.argv.interactive || this.argv.i;
     this.promises = [];
@@ -346,6 +346,9 @@ class NewRegressions {
         }
         continue;
       }
+      if (line === 'EOF') {
+        continue;
+      }
       if (line === 'RUN') {
         const testCallback = this.callbackFromPath(test.from);
         if (testCallback !== null) {
@@ -356,7 +359,7 @@ class NewRegressions {
       }
       const eq = l.indexOf('=');
       if (eq === -1) {
-        throw new Error('Invalid database', l);
+        throw new Error('Invalid database: ' + l);
       }
       const k = l.substring(0, eq);
       const v = l.substring(eq + 1);
@@ -379,7 +382,7 @@ class NewRegressions {
             const endString = vt.substring(2);
             test.cmdScript = '';
             i++;
-            while (!lines[i].startsWith(endString)) {
+            while (lines[i] != endString) {
               test.cmdScript += lines[i] + '\n';
               i++;
             }
@@ -524,6 +527,7 @@ class NewRegressions {
   load (fileName, cb) {
     this.name = fileName;
     const blob = fs.readFileSync(path.join(__dirname, fileName));
+    // do we really need to support gzipped tests?
     zlib.gunzip(blob, (err, data) => {
       let tests;
       if (err) {
@@ -539,10 +543,13 @@ class NewRegressions {
               .replace(/awk "{print \\\$1}"/g, "sed 's/^[ \\t]*//;s/[ \\t]*$//'");
           }
         }
-        this.runTests(fileName, tests);
       } else {
-        this.runTests(fileName, tests.split('\n'));
+        tests = tests.split('\n');
       }
+      if (this.argv.grep !== undefined) {
+        return cb(null, {});
+      }
+      this.runTests(fileName, tests);
       Promise.all(this.promises).then(res => {
         this.printReport();
         cb(null, res);
@@ -578,7 +585,7 @@ class NewRegressions {
       }
     }
     if (test.expect !== undefined) {
-      test.stdoutFail = test.expect64 || test.expect64 === undefined
+      test.stdoutFail = (test.expect64 || test.expect64 === undefined)
         ? test.expect.trim() !== test.stdout.trim()
         : test.expect !== test.stdout;
     } else {
@@ -718,7 +725,10 @@ class NewRegressions {
       return x.toString().padStart(4);
     }
     const name = (typeof this.name === 'string') ? this.name.padStart(30) : '';
-    console.log('[**]', name + '  ', 'OK', n(r.OK), 'BR', n(r.BR), 'XX', n(r.XX), 'FX', n(r.FX));
+
+    if ((process.env.NOOK && (r.XX || r.FX)) || !process.env.NOOK) {
+      console.log('[**]', name + '  ', 'OK', n(r.OK), 'BR', n(r.BR), 'XX', n(r.XX), 'FX', n(r.FX));
+    }
   }
 
   fixTest (name, expect, cb) {
