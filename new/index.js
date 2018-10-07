@@ -7,7 +7,6 @@ const promisify = require('util').promisify;
 const walk = require('walk').walk;
 const fs = require('fs');
 const fsWriteFile = promisify(fs.writeFile);
-const jsdiff = require('diff');
 const tmp = require('tmp');
 const zlib = require('zlib');
 const path = require('path');
@@ -15,20 +14,21 @@ const spawn = require('child_process').spawn;
 const spawnSync = require('child_process').spawnSync;
 const r2promise = require('r2pipe-promise');
 const common = require('./common');
-const promiseLimit = require('promise-limit')
+const promiseLimit = require('promise-limit');
 
-const limit = promiseLimit(promiseConcurrency)
+const limit = promiseLimit(promiseConcurrency);
 
 if (process.env.TRAVIS || process.env.APPVEYOR) {
- process.env.NOOK = 1;
+  process.env.NOOK = 1;
 }
 
-function newPromise(cb) {
+function newPromise (cb) {
   return limit(_ => new Promise(cb));
 }
 
 // support node < 8
 if (!String.prototype.padStart) {
+  // XXX
   String.prototype.padStart = function padStart (targetLength, padString) {
     targetLength = targetLength >> 0; // floor if number or convert non-number to 0;
     padString = String(padString || ' ');
@@ -281,7 +281,7 @@ class NewRegressions {
           console.error(e);
           reject(e);
         }
-/*
+        /*
         // using r2pipe, maybe viable for some tests
         let res = '';
         let r2 = null;
@@ -350,7 +350,7 @@ class NewRegressions {
         }
         continue;
       }
-/*
+      /*
       if (line === 'EOF') {
         continue;
       }
@@ -392,25 +392,27 @@ class NewRegressions {
               test.cmdScript += lines[i] + '\n';
               i++;
             }
-            // i--;
+            if (endString !== 'RUN') {
+              i--;
+            }
           } else {
             const delim = vt.charAt(0);
             if (delims.test(delim)) {
               const startDelim = v.indexOf(delim);
               let endDelim = v.indexOf(delim, startDelim + 1);
-              if (endDelim == -1) {
-                test.cmdScript = v.substring(startDelim + 1) + "\n";
+              if (endDelim === -1) {
+                test.cmdScript = v.substring(startDelim + 1) + '\n';
                 i++;
-                while ((endDelim = lines[i].indexOf(delim)) == -1) {
+                while ((endDelim = lines[i].indexOf(delim)) === -1) {
                   test.cmdScript += lines[i] + '\n';
                   i++;
                 }
                 test.cmdScript += lines[i].substring(0, endDelim);
               } else {
-                test.cmdScript = v.substring(startDelim + 1, endDelim) + "\n";
+                test.cmdScript = v.substring(startDelim + 1, endDelim) + '\n';
               }
             } else {
-              test.cmdScript = v ? v + "\n" : v;
+              test.cmdScript = v ? v + '\n' : v;
             }
           }
           test.cmds = test.cmdScript ? test.cmdScript.trim().split('\n') : [];
@@ -442,26 +444,28 @@ class NewRegressions {
             if (lines[i] === undefined) {
               throw new Error('Unexpected EOF in EXPECT -- did you forget a ' + endString + '?');
             }
-            // i--;
+            if (endString !== 'RUN') {
+              i--;
+            }
           } else {
             const delim = vt.charAt(0);
             if (delims.test(delim)) {
               test.expectDelim = delim;
               const startDelim = v.indexOf(delim);
               let endDelim = v.indexOf(delim, startDelim + 1);
-              if (endDelim == -1) {
-                test.expect = v.substring(startDelim + 1) + "\n";
+              if (endDelim === -1) {
+                test.expect = v.substring(startDelim + 1) + '\n';
                 i++;
-                while ((endDelim = lines[i].indexOf(delim)) == -1) {
+                while ((endDelim = lines[i].indexOf(delim)) === -1) {
                   test.expect += lines[i] + '\n';
                   i++;
                 }
                 test.expect += lines[i].substring(0, endDelim);
               } else {
-                test.expect = v.substring(startDelim + 1, endDelim);  // No newline added
+                test.expect = v.substring(startDelim + 1, endDelim); // No newline added
               }
             } else {
-              test.expect = v + "\n";
+              test.expect = v + '\n';
             }
           }
           break;
@@ -489,19 +493,19 @@ class NewRegressions {
               test.expectErrDelim = delim;
               const startDelim = v.indexOf(delim);
               let endDelim = v.indexOf(delim, startDelim + 1);
-              if (endDelim == -1) {
-                test.expectErr = v.substring(startDelim + 1) + "\n";
+              if (endDelim === -1) {
+                test.expectErr = v.substring(startDelim + 1) + '\n';
                 i++;
-                while ((endDelim = lines[i].indexOf(delim)) == -1) {
+                while ((endDelim = lines[i].indexOf(delim)) === -1) {
                   test.expectErr += lines[i] + '\n';
                   i++;
                 }
                 test.expectErr += lines[i].substring(0, endDelim);
               } else {
-                test.expectErr = v.substring(startDelim + 1, endDelim);  // No newline added
+                test.expectErr = v.substring(startDelim + 1, endDelim); // No newline added
               }
             } else {
-              test.expectErr = v + "\n";
+              test.expectErr = v + '\n';
             }
           }
           break;
@@ -515,9 +519,12 @@ class NewRegressions {
           throw new Error('Invalid database, key =(', k, ')');
       }
     }
+    function complete (x) {
+      //
+    }
     if (Object.keys(test) !== 0) {
       if (test.file && test.cmds) {
-        this.promises.push(this.runTest(test));
+        this.promises.push(this.runTest(test, complete));
       }
     }
   }
@@ -600,8 +607,8 @@ class NewRegressions {
     test.stderrFail = test.expectErr !== undefined ? test.expectErr !== test.stderr : false;
     test.passes = !test.stdoutFail && !test.stderrFail;
     const status = (test.passes)
-    ? (test.broken ? colors.yellow('[FX]') : colors.green('[OK]'))
-    : (test.broken ? colors.blue('[BR]') : colors.red('[XX]'));
+      ? (test.broken ? colors.yellow('[FX]') : colors.green('[OK]'))
+      : (test.broken ? colors.blue('[BR]') : colors.red('[XX]'));
     this.report.total++;
     if (test.passes) {
       if (test.broken) {
@@ -625,7 +632,7 @@ class NewRegressions {
     }
     if ((process.env.NOOK && status !== colors.green('[OK]')) || !process.env.NOOK) {
       // console.log('[' + status + ']', colors.yellow(test.name), test.path, test.lifetime);
-      process.stdout.write('\x1b[0K\r' + status + ' ' + test.from + ' ' + colors.yellow(test.name) + ' ' + test.path  + ' ' + test.lifetime + (this.verbose ? '\n' : '\r'));
+      process.stdout.write('\x1b[0K\r' + status + ' ' + test.from + ' ' + colors.yellow(test.name) + ' ' + test.path + ' ' + test.lifetime + (this.verbose ? '\n' : '\r'));
     }
     return test.passes;
   }
@@ -664,7 +671,7 @@ class NewRegressions {
         }
         common.showDiff(test.expectErr, test.stderr);
       }
-/*
+      /*
       console.log('===');
       if (test.expect !== null) {
         ///console.log('---');
@@ -702,8 +709,8 @@ class NewRegressions {
               if (test.expectErrDelim === undefined) {
                 test.expectErrDelim = '%';
               }
-              common.highlightTrailingWs(null, 'EXPECT_ERR=' + test.expectErrDelim + test.stderr
-                                         + test.expectErrDelim + '\n');
+              common.highlightTrailingWs(null, 'EXPECT_ERR=' + test.expectErrDelim + test.stderr +
+                                         test.expectErrDelim + '\n');
             }
           } else {
             common.highlightTrailingWs(null, 'EXPECT_ERR=' + test.stderr);
@@ -711,7 +718,7 @@ class NewRegressions {
         }
       }
       if (this.interactive) {
-//        console.log('TODO: interactive thing should happen here');
+        //        console.log('TODO: interactive thing should happen here');
       }
       this.queue.push(test);
     }
@@ -793,19 +800,19 @@ function parseTestAsm (source, line) {
   let tests = [];
   for (let c of type) {
     let t = {from: source, broken: false, args: r2args.join(';')};
-    t.endianess = false
+    t.endianess = false;
     if (type.indexOf('E') !== -1) {
       t.endianess = true;
     }
     switch (c) {
       case 'd':
-        t.cmd = "e cfg.bigendian=" + t.endianess + ";" + 'pad ' + expect;
+        t.cmd = 'e cfg.bigendian=' + t.endianess + ';' + 'pad ' + expect;
         t.expect = asm;
         t.name = filename + ': ' + expect + ' => "' + asm + '"' + colors.blue(' (disassemble)');
         tests.push(t);
         break;
       case 'a':
-        t.cmd = "e cfg.bigendian=" + t.endianess + ";" + 'pa ' + asm;
+        t.cmd = 'e cfg.bigendian=' + t.endianess + ';' + 'pa ' + asm;
         t.expect = expect;
         t.name = filename + ': "' + asm + '" => ' + expect + colors.blue(' (assemble)');
         tests.push(t);
