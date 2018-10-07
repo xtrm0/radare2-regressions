@@ -392,7 +392,7 @@ class NewRegressions {
               test.cmdScript += lines[i] + '\n';
               i++;
             }
-            if (endString !== 'RUN') {
+            if (endString === 'RUN') {
               i--;
             }
           } else {
@@ -444,7 +444,7 @@ class NewRegressions {
             if (lines[i] === undefined) {
               throw new Error('Unexpected EOF in EXPECT -- did you forget a ' + endString + '?');
             }
-            if (endString !== 'RUN') {
+            if (endString === 'RUN') {
               i--;
             }
           } else {
