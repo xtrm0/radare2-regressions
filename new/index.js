@@ -392,7 +392,7 @@ class NewRegressions {
               test.cmdScript += lines[i] + '\n';
               i++;
             }
-            if (endString === 'RUN') {
+            if (endString !== 'EOF') {
               i--;
             }
           } else {
@@ -444,7 +444,7 @@ class NewRegressions {
             if (lines[i] === undefined) {
               throw new Error('Unexpected EOF in EXPECT -- did you forget a ' + endString + '?');
             }
-            if (endString === 'RUN') {
+            if (endString !== 'EOF') {
               i--;
             }
           } else {
@@ -486,7 +486,9 @@ class NewRegressions {
             if (lines[i] === undefined) {
               throw new Error('Unexpected EOF in EXPECT_ERR -- did you forget a ' + endString + '?');
             }
-            i--;
+            if (endString !== 'EOF') {
+              i--;
+            }
           } else {
             const delim = vt.charAt(0);
             if (delims.test(delim)) {
